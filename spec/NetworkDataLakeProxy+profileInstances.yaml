@@ -120,7 +120,7 @@ profile-instances:
     capability:
       integer-name: 'maxNumberOfParallelCcRequests'
       purpose: 'Maximum number of allowed parallel Contol construct requests'
-      minimum: 1
+      minimum: 0
       maximum: 1
     configuration:
       integer-value: 1

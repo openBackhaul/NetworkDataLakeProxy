@@ -785,6 +785,54 @@
             ]
           },
           {
+            "uuid": "ndlp-1-0-0-op-s-is-010",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-0-0-http-s-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-server-interface-1-0:operation-server-interface-pac": {
+                  "operation-server-interface-capability": {
+                    "operation-name": "/v1/provide-list-of-connected-devices"
+                  },
+                  "operation-server-interface-configuration": {
+                    "life-cycle-state": "operation-server-interface-1-0:LIFE_CYCLE_STATE_TYPE_EXPERIMENTAL",
+                    "operation-key": "n.a."
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "ndlp-1-0-0-op-s-is-011",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-0-0-http-s-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-server-interface-1-0:operation-server-interface-pac": {
+                  "operation-server-interface-capability": {
+                    "operation-name": "/v1/provide-inventory-data-of-device"
+                  },
+                  "operation-server-interface-configuration": {
+                    "life-cycle-state": "operation-server-interface-1-0:LIFE_CYCLE_STATE_TYPE_EXPERIMENTAL",
+                    "operation-key": "n.a."
+                  }
+                }
+              }
+            ]
+          },
+          {
             "uuid": "ndlp-1-0-0-http-s-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
             "client-ltp": [
@@ -809,7 +857,9 @@
               "ndlp-1-0-0-op-s-bs-002",
               "ndlp-1-0-0-op-s-bs-003",
               "ndlp-1-0-0-op-s-bs-004",
-              "ndlp-1-0-0-op-s-bs-005"
+              "ndlp-1-0-0-op-s-bs-005",
+              "ndlp-1-0-0-op-s-is-010",
+              "ndlp-1-0-0-op-s-is-011"
             ],
             "server-ltp": [
               "ndlp-1-0-0-tcp-s-000"
@@ -820,18 +870,18 @@
                 "layer-protocol-name": "http-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_HTTP_LAYER",
                 "http-server-interface-1-0:http-server-interface-pac": {
                   "http-server-interface-capability": {
-                    "application-name": " >>> ownApplicationName <<< ",
-                    "release-number": " >>> ownReleaseNumer (e.g. 0.0.1) <<< ",
-                    "application-purpose": " >>> applicationPurpose <<< ",
-                    "data-update-period": " >>> http-server-interface-1-0:DATA_UPDATE_PERIOD_TYPE_REAL_TIME",
-                    "owner-name": " >>> ownerName <<< ",
-                    "owner-email-address": " >>> ownerEmailAddress <<< ",
+                    "application-name": "NetworkDataLakeProxy",
+                    "release-number": "1.0.0",
+                    "application-purpose": "The NDLP provides an interface toward the NetworkDataLake.",
+                    "data-update-period": "http-server-interface-1-0:DATA_UPDATE_PERIOD_TYPE_REAL_TIME",
+                    "owner-name": "Thomas Seitz",
+                    "owner-email-address": "Thomas.Seitz@telefonica.de",
                     "release-list": [
                       {
                         "local-id": "0",
-                        "release-number": " >>> e.g. 0.0.1 <<< ",
-                        "release-date": " >>> e.g. 19.05.2022 <<< ",
-                        "changes": " >>> e.g. Initial version. <<< "
+                        "release-number": "1.0.0",
+                        "release-date": "09.08.2024",
+                        "changes": "Initial version"
                       }
                     ]
                   }

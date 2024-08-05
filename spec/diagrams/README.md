@@ -4,6 +4,6 @@
 ![PromptForProvidingListOfConnectedDevicesCausesReadingMwdiDeviceLice](./000_ProvideListOfConnectedDevices.png)  
 .  
 .  
-![PromptForInventoryCausesReadingMwdiDeviceData](./001_ProvideInventoryDataOfDevice.png)  
+![RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi](./001_ProvideInventoryDataOfDevice.png)  
 .  
 .  

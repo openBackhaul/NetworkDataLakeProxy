@@ -210,6 +210,48 @@
                   }
                 }
               }
+            },
+            {
+              "uuid": "ndlp-1-0-0-integer-p-000",
+              "profile-name": "integer-profile-1-0:PROFILE_NAME_INTEGER_PROFILE",
+              "integer-profile-1-0:integer-profile-pac": {
+                "integer-profile-capability": {
+                  "integer-name": "maxNumberOfParallelCcRequests",
+                  "purpose": "Maximum number of allowed parallel Contol construct requests",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "integer-profile-configuration": {
+                  "integer-value": 1
+                }
+              }
+            },
+            {
+              "uuid": "ndlp-1-0-0-integer-p-001",
+              "profile-name": "integer-profile-1-0:PROFILE_NAME_INTEGER_PROFILE",
+              "integer-profile-1-0:integer-profile-pac": {
+                "integer-profile-capability": {
+                  "integer-name": "maxNumberOfCcRequestsPerSecond",
+                  "purpose": "Maximum number of allowed Control construct requests per second",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "integer-profile-configuration": {
+                  "integer-value": 1
+                }
+              }
+            },
+            {
+              "uuid": "ndlp-1-0-0-string-p-000",
+              "profile-name": "string-profile-1-0:PROFILE_NAME_TYPE_STRING_PROFILE",
+              "string-profile-1-0:string-profile-pac": {
+                "string-profile-capability": {
+                  "string-name": "RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi"
+                },
+                "string-profile-configuration": {
+                  "string-value": "equipment-augment-1-0:control-construct-pac;top-level-equipment;equipment(uuid;operational-state;connector(local-id;equipment-augment-1-0:connector-pac(connector-kind;outside-label;sequence-id));contained-holder(occupying-fru;local-id;equipment-augment-1-0:holder-pac(vendor-label;outside-label;sequence-id));expected-equipment(structure(category);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version));local-id;operational-state);actual-equipment(structure(category);physical-properties(temperature);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version);equipment-instance(manufacture-date;serial-number));operational-state));firmware-1-0:firmware-collection;logical-termination-point(uuid;layer-protocol(local-id;layer-protocol-name;air-interface-2-0:air-interface-pac(air-interface-configuration);ethernet-container-2-0:ethernet-container-pac(ethernet-container-configuration);hybrid-mw-structure-2-0:hybrid-mw-structure-pac(hybrid-mw-structure-configuration);ip-interface-1-0:ip-interface-pac(ip-interface-configuration);mac-interface-1-0:mac-interface-pac(mac-interface-configuration);pure-ethernet-structure-2-0:pure-ethernet-structure-pac(pure-ethernet-structure-configuration);tdm-container-2-0:tdm-container-pac(tdm-container-configuration);vlan-interface-1-0:vlan-interface-pac(vlan-interface-configuration);wire-interface-2-0:wire-interface-pac(wire-interface-configuration)));profile-collection;forwarding-domain"
+                }
+              }
             }
           ]
         },
@@ -743,6 +785,54 @@
             ]
           },
           {
+            "uuid": "ndlp-1-0-0-op-s-is-010",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-0-0-http-s-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-server-interface-1-0:operation-server-interface-pac": {
+                  "operation-server-interface-capability": {
+                    "operation-name": "/v1/provide-list-of-connected-devices"
+                  },
+                  "operation-server-interface-configuration": {
+                    "life-cycle-state": "operation-server-interface-1-0:LIFE_CYCLE_STATE_TYPE_EXPERIMENTAL",
+                    "operation-key": "n.a."
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "ndlp-1-0-0-op-s-is-011",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-0-0-http-s-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-server-interface-1-0:operation-server-interface-pac": {
+                  "operation-server-interface-capability": {
+                    "operation-name": "/v1/provide-inventory-data-of-device"
+                  },
+                  "operation-server-interface-configuration": {
+                    "life-cycle-state": "operation-server-interface-1-0:LIFE_CYCLE_STATE_TYPE_EXPERIMENTAL",
+                    "operation-key": "n.a."
+                  }
+                }
+              }
+            ]
+          },
+          {
             "uuid": "ndlp-1-0-0-http-s-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SOURCE",
             "client-ltp": [
@@ -767,7 +857,9 @@
               "ndlp-1-0-0-op-s-bs-002",
               "ndlp-1-0-0-op-s-bs-003",
               "ndlp-1-0-0-op-s-bs-004",
-              "ndlp-1-0-0-op-s-bs-005"
+              "ndlp-1-0-0-op-s-bs-005",
+              "ndlp-1-0-0-op-s-is-010",
+              "ndlp-1-0-0-op-s-is-011"
             ],
             "server-ltp": [
               "ndlp-1-0-0-tcp-s-000"
@@ -778,18 +870,18 @@
                 "layer-protocol-name": "http-server-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_HTTP_LAYER",
                 "http-server-interface-1-0:http-server-interface-pac": {
                   "http-server-interface-capability": {
-                    "application-name": " >>> ownApplicationName <<< ",
-                    "release-number": " >>> ownReleaseNumer (e.g. 0.0.1) <<< ",
-                    "application-purpose": " >>> applicationPurpose <<< ",
-                    "data-update-period": " >>> http-server-interface-1-0:DATA_UPDATE_PERIOD_TYPE_REAL_TIME",
-                    "owner-name": " >>> ownerName <<< ",
-                    "owner-email-address": " >>> ownerEmailAddress <<< ",
+                    "application-name": "NetworkDataLakeProxy",
+                    "release-number": "1.0.0",
+                    "application-purpose": "The NDLP provides an interface toward the NetworkDataLake.",
+                    "data-update-period": "http-server-interface-1-0:DATA_UPDATE_PERIOD_TYPE_REAL_TIME",
+                    "owner-name": "Thomas Seitz",
+                    "owner-email-address": "Thomas.Seitz@telefonica.de",
                     "release-list": [
                       {
                         "local-id": "0",
-                        "release-number": " >>> e.g. 0.0.1 <<< ",
-                        "release-date": " >>> e.g. 19.05.2022 <<< ",
-                        "changes": " >>> e.g. Initial version. <<< "
+                        "release-number": "1.0.0",
+                        "release-date": "09.08.2024",
+                        "changes": "Initial version"
                       }
                     ]
                   }
@@ -817,81 +909,6 @@
                       "ipv-4-address": "127.0.0.1"
                     },
                     "local-port": 3001
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "uuid": "ndlp-1-0-0-es-c-es-1-0-0-000",
-            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
-            "client-ltp": [
-            ],
-            "server-ltp": [
-              "ndlp-1-0-0-http-c-es-1-0-0-000"
-            ],
-            "layer-protocol": [
-              {
-                "local-id": "0",
-                "layer-protocol-name": "elasticsearch-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_ELASTICSEARCH_LAYER",
-                "elasticsearch-client-interface-1-0:elasticsearch-client-interface-pac": {
-                  "elasticsearch-client-interface-configuration": {
-                    "auth": {
-                      "api-key": "API key not yet defined."
-                    },
-                    "index-alias": " >>> Application specific IndexAlias <<< "
-                  },
-                  "elasticsearch-client-interface-status": {
-                    "operational-state": "elasticsearch-client-interface-1-0:OPERATIONAL_STATE_TYPE_NOT_YET_DEFINED",
-                    "life-cycle-state": "elasticsearch-client-interface-1-0:LIFE_CYCLE_STATE_TYPE_NOT_YET_DEFINED"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "uuid": "ndlp-1-0-0-http-c-es-1-0-0-000",
-            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
-            "client-ltp": [
-              "ndlp-1-0-0-es-c-es-1-0-0-000"
-            ],
-            "server-ltp": [
-              "ndlp-1-0-0-tcp-c-es-1-0-0-000"
-            ],
-            "layer-protocol": [
-              {
-                "local-id": "0",
-                "layer-protocol-name": "http-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_HTTP_LAYER",
-                "http-client-interface-1-0:http-client-interface-pac": {
-                  "http-client-interface-configuration": {
-                    "application-name": "ElasticSearch",
-                    "release-number": "1.0.0"
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "uuid": "ndlp-1-0-0-tcp-c-es-1-0-0-000",
-            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
-            "client-ltp": [
-              "ndlp-1-0-0-http-c-es-1-0-0-000"
-            ],
-            "server-ltp": [
-            ],
-            "layer-protocol": [
-              {
-                "local-id": "0",
-                "layer-protocol-name": "tcp-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_TCP_LAYER",
-                "tcp-client-interface-1-0:tcp-client-interface-pac": {
-                  "tcp-client-interface-configuration": {
-                    "remote-protocol": "tcp-client-interface-1-0:PROTOCOL_TYPE_HTTP",
-                    "remote-address": {
-                      "ip-address": {
-                        "ipv-4-address": "127.0.0.1"
-                      }
-                    },
-                    "remote-port": 3015
                   }
                 }
               }
@@ -1904,6 +1921,16 @@
                     "logical-termination-point": "ndlp-1-0-0-op-s-bs-005"
                   },
                   {
+                    "local-id": "156",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
+                    "logical-termination-point": "ndlp-1-0-0-op-s-is-010"
+                  },
+                  {
+                    "local-id": "157",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
+                    "logical-termination-point": "ndlp-1-0-0-op-s-is-011"
+                  },
+                  {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
                     "logical-termination-point": "ndlp-1-0-0-op-c-bs-eatl-2-1-0-000"
@@ -2367,6 +2394,56 @@
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
                     "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-005"
+                  }
+                ]
+              },
+              {
+                "uuid": "ndlp-1-0-0-op-fc-is-010",
+                "name": [
+                  {
+                    "value-name": "ForwardingKind",
+                    "value": "core-model-1-4:FORWARDING_KIND_TYPE_INVARIANT_PROCESS_SNIPPET"
+                  },
+                  {
+                    "value-name": "ForwardingName",
+                    "value": "PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList"
+                  }
+                ],
+                "fc-port": [
+                  {
+                    "local-id": "100",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
+                    "logical-termination-point": "nep-1-0-0-op-s-is-010"
+                  },
+                  {
+                    "local-id": "200",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
+                    "logical-termination-point": "ndlp-1-0-0-op-c-is-mwdi-1-1-2-010"
+                  }
+                ]
+              },
+              {
+                "uuid": "ndlp-1-0-0-op-fc-is-010",
+                "name": [
+                  {
+                    "value-name": "ForwardingKind",
+                    "value": "core-model-1-4:FORWARDING_KIND_TYPE_INVARIANT_PROCESS_SNIPPET"
+                  },
+                  {
+                    "value-name": "ForwardingName",
+                    "value": "RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi"
+                  }
+                ],
+                "fc-port": [
+                  {
+                    "local-id": "100",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
+                    "logical-termination-point": "nep-1-0-0-op-s-is-011"
+                  },
+                  {
+                    "local-id": "200",
+                    "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
+                    "logical-termination-point": "ndlp-1-0-0-op-c-is-mwdi-1-1-2-100"
                   }
                 ]
               }

@@ -1,4 +1,4 @@
-@startuml 001_ProvideInventoryDataOfDevice
+@startuml 011_ProvideInventoryDataOfDevice
 skinparam responseMessageBelowArrow true
 
 title PromptForInventoryCausesReadingMwdiDeviceData

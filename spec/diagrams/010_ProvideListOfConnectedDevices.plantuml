@@ -1,4 +1,4 @@
-@startuml 000_ProvideListOfConnectedDevices
+@startuml 010_ProvideListOfConnectedDevices
 skinparam responseMessageBelowArrow true
 
 title PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList

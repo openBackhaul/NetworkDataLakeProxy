@@ -107,3 +107,31 @@ profile-instances:
       datatype: string
     configuration:
       value-reference: '/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-http-s-000/layer-protocol=0/http-server-interface-1-0:http-server-interface-pac/http-server-interface-capability/release-list=0/changes'
+
+  - profile-name: 'StringProfile'
+    uuid: 'ndlp-1-0-0-string-p-000'
+    capability:
+      string-name: 'RequestForInventoryCausesReadingOfDeviceDataFromMwdi'
+    configuration:
+      string-value: 'equipment-augment-1-0:control-construct-pac;top-level-equipment;equipment(uuid;operational-state;connector(local-id;equipment-augment-1-0:connector-pac(connector-kind;outside-label;sequence-id));contained-holder(occupying-fru;local-id;equipment-augment-1-0:holder-pac(vendor-label;outside-label;sequence-id));expected-equipment(structure(category);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version));local-id;operational-state);actual-equipment(structure(category);physical-properties(temperature);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version);equipment-instance(manufacture-date;serial-number));operational-state));firmware-1-0:firmware-collection;logical-termination-point(uuid;layer-protocol(local-id;layer-protocol-name;air-interface-2-0:air-interface-pac(air-interface-configuration);ethernet-container-2-0:ethernet-container-pac(ethernet-container-configuration);hybrid-mw-structure-2-0:hybrid-mw-structure-pac(hybrid-mw-structure-configuration);ip-interface-1-0:ip-interface-pac(ip-interface-configuration);mac-interface-1-0:mac-interface-pac(mac-interface-configuration);pure-ethernet-structure-2-0:pure-ethernet-structure-pac(pure-ethernet-structure-configuration);tdm-container-2-0:tdm-container-pac(tdm-container-configuration);vlan-interface-1-0:vlan-interface-pac(vlan-interface-configuration);wire-interface-2-0:wire-interface-pac(wire-interface-configuration)));profile-collection;forwarding-domain'
+
+  - profile-name: 'IntegerProfile'
+    uuid: 'ndlp-1-0-0-integer-p-000'
+    capability:
+      integer-name: 'maxNumberOfParallelCcRequests'
+      purpose: 'Maximum number of allowed parallel Contol construct requests'
+      minimum: 1
+      maximum: 1
+    configuration:
+      integer-value: 1
+
+  - profile-name: 'IntegerProfile'
+    uuid: 'ndlp-1-0-0-integer-p-001'
+    capability:
+      integer-name: 'maxNumberOfCcRequestsPerSecond'
+      purpose: 'Maximum number of allowed Control construct requests per second'
+      minimum: 0
+      maximum: 1
+    configuration:
+      integer-value: 1
+

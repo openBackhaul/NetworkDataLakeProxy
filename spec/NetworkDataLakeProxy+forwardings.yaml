@@ -424,7 +424,7 @@ forwardings:
         uuid: nep-1-0-0-op-s-is-010
     consequent-requests:
       - client-name: MWDI://v1/provide-list-of-connected-devices
-        uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-1-010
+        uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-010
 
   - forwarding-name: PromptForInventoryCausesReadingMwdiDeviceData
     uuid: nep-1-0-0-op-fc-is-011
@@ -439,4 +439,4 @@ forwardings:
         uuid: nep-1-0-0-op-s-is-011
     consequent-requests:
       - client-name: MWDI://core-model-1-4:network-control-domain=cache/control-construct={mountName}
-        uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-1-100
+        uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-100

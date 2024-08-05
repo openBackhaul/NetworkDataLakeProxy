@@ -110,7 +110,10 @@ forwardings:
         uuid: ndlp-1-0-0-op-s-bs-004
       - server-name: /docs
         uuid: ndlp-1-0-0-op-s-bs-005
-      ## TODO: All service requests to be complemented
+      - server-name: /v1/provide-list-of-connected-devices
+        uuid: ndlp-1-0-0-op-s-is-010
+      - server-name: /v1/provide-inventory-data-of-device
+        uuid: ndlp-1-0-0-op-s-is-011
     consequent-requests:
       - client-name: ExecutionAndTraceLog://v1/record-service-request
         uuid: ndlp-1-0-0-op-c-bs-eatl-2-1-0-000

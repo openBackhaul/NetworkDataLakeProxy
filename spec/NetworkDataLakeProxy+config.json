@@ -210,7 +210,42 @@
                   }
                 }
               }
-            }
+            },
+
+
+
+            {
+              "uuid": "nep-1-0-0-integer-p-000",
+              "profile-name": "integer-profile-1-0:PROFILE_NAME_INTEGER_PROFILE",
+              "integer-profile-1-0:integer-profile-pac": {
+                "integer-profile-capability": {
+                  "integer-name": "maxNumberOfParallelReadCurrentMacTableFromDeviceRequests",
+                  "purpose": "Maximum number of allowed parallel requests to read the current mac table from a device",
+                  "minimum": 1,
+                  "maximum": 50
+                },
+                "integer-profile-configuration": {
+                  "integer-value": 10
+                }
+              }
+            },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           ]
         },
         "logical-termination-point": [

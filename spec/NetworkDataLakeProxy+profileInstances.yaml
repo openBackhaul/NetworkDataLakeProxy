@@ -108,32 +108,10 @@ profile-instances:
     configuration:
       value-reference: '/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-http-s-000/layer-protocol=0/http-server-interface-1-0:http-server-interface-pac/http-server-interface-capability/release-list=0/changes'
 
-
   - profile-name: 'StringProfile'
     uuid: 'ndlp-1-0-0-string-p-000'
     capability:
       string-name: 'RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi'
     configuration:
-      string-value: 'logical-termination-point(uuid;server-ltp;client-ltp;layer-protocol(local-id;layer-protocol-name))'
-
-
-
-Die Daten vom MWDI sollen auf folgende Inhalte heruntergefiltert werden:
-  - Physical inventory (Equipment, Firmware)  
-  - Logical inventory (LtpConfiguration, Profiles, Forwarding)  
-
-Erster Gedanke:  
-  Das Filtern soll mit Hilfe der bestehenden Implementierung des Fieldsfilters bereits im MWDI durchgeführt werden  
-  (Geringster Implementierungsaufwand, Geringster Datentransport)  
-  Nachteil: Der ?fields Filter auf die Configuration Klasse muss die unterschiedlichen InterfaceTypen(AirInterface, WireInterface etc.)  
-            unterscheiden. D.h. es ergibt sich vermutlich ein extrem langer String.  
-
-Alternativen:  
-  - Der NDLP zieht vom MWDI das gesamte ControlConstruct und nimmt die Filterung vor der Weitergabe vor  
-    (Mehr an Datentransport vermutlich verkraftbar; ärgerlich ist die zusätzliche Implementierung der Filterung )
-  - Der NDLP zieht vom MWDI das gesamte ControlConstruct und gibt alles an den DataLake weiter  
-    (Unnötig großer Datentransport nach außerhalb der Domäne, eventuelle Filterung wäre dann Angelegenheit des DataLake) 
-
-Beginn den Filter zusammenzubauen:
-  logical-termination-point(uuid;layer-protocol(local-id;layer-protocol-name))
+      string-value: 'equipment-augment-1-0%3Acontrol-construct-pac%3Btop-level-equipment%3Bequipment%28uuid%3Boperational-state%3Bconnector%28local-id%3Bequipment-augment-1-0%3Aconnector-pac%28connector-kind%3Boutside-label%3Bsequence-id%29%29%3Bcontained-holder%28occupying-fru%3Blocal-id%3Bequipment-augment-1-0%3Aholder-pac%28vendor-label%3Boutside-label%3Bsequence-id%29%29%3Bexpected-equipment%28structure%28category%29%3Bmanufactured-thing%28manufacturer-properties%28manufacturer-name%29%3Bequipment-type%28part-type-identifier%3Bversion%29%29%3Blocal-id%3Boperational-state%29%3Bactual-equipment%28structure%28category%29%3Bphysical-properties%28temperature%29%3Bmanufactured-thing%28manufacturer-properties%28manufacturer-name%29%3Bequipment-type%28part-type-identifier%3Bversion%29%3Bequipment-instance%28manufacture-date%3Bserial-number%29%29%3Boperational-state%29%29%3Bfirmware-1-0%3Afirmware-collection%3Blogical-termination-point%28uuid%3Blayer-protocol%28local-id%3Blayer-protocol-name%3Bair-interface-2-0%3Aair-interface-pac%28air-interface-configuration%29%3Bethernet-container-2-0%3Aethernet-container-pac%28ethernet-container-configuration%29%3Bhybrid-mw-structure-2-0%3Ahybrid-mw-structure-pac%28hybrid-mw-structure-configuration%29%3Bip-interface-1-0%3Aip-interface-pac%28ip-interface-configuration%29%3Bmac-interface-1-0%3Amac-interface-pac%28mac-interface-configuration%29%3Bpure-ethernet-structure-2-0%3Apure-ethernet-structure-pac%28pure-ethernet-structure-configuration%29%3Btdm-container-2-0%3Atdm-container-pac%28tdm-container-configuration%29%3Bvlan-interface-1-0%3Avlan-interface-pac%28vlan-interface-configuration%29%3Bwire-interface-2-0%3Awire-interface-pac%28wire-interface-configuration%29%29%29%3Bprofile-collection%3Bforwarding-domain'
 

@@ -1,0 +1,48 @@
+ [
+	{
+		"mode": "debug",
+		"serverList": [
+			{
+				"serverName": "dummy",
+				"dummyUri": "ping.openBackhaul.com"
+			},
+			{
+				"serverName": "mdip",
+				"server": "http://ip-address:port",
+				"pathToControlConstruct": "/core-model-1-4:network-control-domain=cache/control-construct={mountName}",
+				"authorizationCode": "",
+				"operationKey": "Operation key not yet provided.",
+				"userName": "Thorsten Heinze",
+				"originator": "FieldsFilterTest",
+				"xCorrelator": "00000000-0000-0000-0000-000000000000",
+				"traceIndicator": "1",
+				"customerJourney": ""
+			},
+			{
+				"serverName": "mwdi",
+				"server": "http://ip-address:port",
+				"pathToControlConstruct": "/core-model-1-4:network-control-domain=cache/control-construct={mountName}",
+				"authorizationCode": "",
+				"operationKey": "Operation key not yet provided.",
+				"userName": "Thorsten Heinze",
+				"originator": "FieldsFilterTest",
+				"xCorrelator": "00000000-0000-0000-0000-000000000000",
+				"traceIndicator": "1",
+				"customerJourney": ""
+			},
+			{
+				"serverName": "controller",
+				"server": "https://ip-address:port",
+				"pathToControlConstruct": "/rests/data/network-topology:network-topology/topology=topology-netconf/node={mountName}/yang-ext:mount/core-model-1-4:control-construct",
+				"authorizationCode": "your_code"
+			}
+		],
+		"collectionInputList": [
+			{
+				"collectionName": "FieldsFilterTest",
+				"serverToBeApplied": "mdip",
+				"mountName": "513250011"
+			}
+		]
+	}
+]

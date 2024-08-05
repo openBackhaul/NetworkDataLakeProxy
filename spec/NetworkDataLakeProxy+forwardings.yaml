@@ -426,7 +426,7 @@ forwardings:
       - client-name: MWDI://v1/provide-list-of-connected-devices
         uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-010
 
-  - forwarding-name: PromptForInventoryCausesReadingMwdiDeviceData
+  - forwarding-name: RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi
     uuid: nep-1-0-0-op-fc-is-011
     forwarding-type: InvariantProcessSnippet
     management-requests:

@@ -1,7 +1,7 @@
 @startuml 011_ProvideInventoryDataOfDevice
 skinparam responseMessageBelowArrow true
 
-title PromptForInventoryCausesReadingMwdiDeviceData
+title RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi
 
 participant "external \n(NetworkDataLake)" as external
 participant "NDLP://v1/provide-inventory-data-of-device" as ndlp

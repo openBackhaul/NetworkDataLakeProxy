@@ -1,0 +1,34 @@
+@startuml 001_ProvideInventoryDataOfDevice
+skinparam responseMessageBelowArrow true
+
+title PromptForInventoryCausesReadingMwdiDeviceData
+
+participant "external \n(NetworkDataLake)" as external
+participant "NDLP://v1/provide-inventory-data-of-device" as ndlp
+participant "MWDI://core-model-1-4:network-control-domain=cache/control-construct={mountName}?fields=<ndlp-1-0-0-string-p-000>" as mwdi
+
+external -> ndlp: {mountName}(BasicAuth)
+activate ndlp
+
+== IF rejection due to Throtteling ==
+note over ndlp
+  IF ((numberOfParallelRequests > <i>maxNumberOfParallelCcRequests</i>) OR
+       (numberOfRequestsPerSecond > <i>maxNumberOfCcRequestsPerSecond</i>))
+  THEN <u>ErrorResponse</u> and exit
+end note
+ndlp -> external: <i>NDLP currently busy: [429] "too many parallel requests"</i>
+
+
+== ELSE: retrieval allowed ==
+ndlp -> mwdi: {mountName}(apiAuthKey)
+note over mwdi
+  filter ControlConstruct data for:
+  - physical inventory (equipment, firmware)
+  - logical inventory (ltpConfiguration, profiles, forwarding)
+end note
+mwdi --> ndlp: {filteredControlConstruct} (no security)
+
+ndlp -> external: {filteredControlConstruct} (no security)
+
+deactivate ndlp
+@enduml

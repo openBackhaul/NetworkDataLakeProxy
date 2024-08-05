@@ -1,0 +1,19 @@
+@startuml 000_ProvideListOfConnectedDevices
+skinparam responseMessageBelowArrow true
+
+title PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList
+
+participant "external \n(NetworkDataLake)" as external
+participant "NDLP://v1/provide-list-of-connected-devices" as ndlp
+participant "MWDI://v1/provide-list-of-connected-devices" as mwdi
+
+external -> ndlp: (BasicAuth)
+activate ndlp
+
+ndlp -> mwdi: (apiAuthKey)
+mwdi --> ndlp: {list-of(mountName)} (no security)
+
+ndlp --> external: {list-of(mountName)} (no security)
+
+deactivate ndlp
+@enduml

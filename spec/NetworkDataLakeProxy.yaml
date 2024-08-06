@@ -447,7 +447,7 @@ paths:
       tags:
         - IndividualServices
       security:
-        - apiKeyAuth: []
+        - basicAuth: []
       responses:
         '200':
           description: 'List of connected devices provided'
@@ -566,7 +566,526 @@ paths:
                 default:
                   $ref: "#/components/responses/responseForErroredServiceRequests"
 
-
+  /v1/provide-inventory-of-device:
+    post:
+      operationId: provideInventoryOfDevice
+      summary: 'Provides inventory data of the device'
+      tags:
+        - IndividualServices
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - mount-name
+              properties:
+                mount-name:
+                  type: string
+                  description: >
+                    'Mount-name of the device, for which the inventory data shall be provided'
+              example:
+                mount-name: "305251234"
+      responses:
+        '200':
+          description: 'Inventory data of device provided'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  core-model-1-4:control-construct:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FILTERED_CONTROL_CONSTRUCT'
+                    description: >
+                      'Filtered control construct
+                      from {RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi.response.body#FILTERED_CONTROL_CONSTRUCT}'
+              example:
+                core-model-1-4:control-construct:
+                  - profile-collection:
+                      profile:
+                        - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                          profile-name: 'scheduler-profile-1-0:PROFILE_NAME_TYPE_SCHEDULER_PROFILE'
+                          scheduler-profile-1-0:scheduler-profile-pac:
+                            scheduler-profile-capability:
+                              scheduler-kind-configuration-is-avail: true
+                              available-queue-list:
+                                - available-scheduling-kind-list:
+                                    - 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_STRICT'
+                                    - 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_DWRR'
+                                  queue-name: 'scheduler-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
+                            scheduler-profile-configuration:
+                              queue-behavior-list:
+                                - scheduler-kind: 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_STRICT'
+                                  weighting: -1
+                                  queue-name: 'scheduler-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                          administrative-control: 'core-model-1-4:ADMINISTRATIVE_CONTROL_QUIESCENT'
+                          lifecycle-state: 'core-model-1-4:LIFECYCLE_STATE_INSTALLED'
+                          administrative-state: 'core-model-1-4:ADMINISTRATIVE_STATE_UNLOCKED'
+                          name:
+                            - value-name: 'profileName'
+                              value: '3WFQStrictPriorityBestEffortMixed'
+                          uuid: 'SCHED-4'
+                    equipment-augment-1-0:control-construct-pac:
+                      last-config-change-timestamp: '2010-11-20T14:00:00+01:00'
+                      external-label: '513559998B'
+                    equipment:
+                      - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                        actual-equipment:
+                          operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                          manufactured-thing:
+                            equipment-instance:
+                              manufacture-date: '2013-08-09'
+                              serial-number: '133204102928'
+                            equipment-type:
+                              part-type-identifier: RDH90120/D0210
+                              version: 'R4A'
+                            manufacturer-properties:
+                              manufacturer-name: 'DELTA'
+                          physical-properties:
+                            temperature: '32'
+                          structure:
+                            category: 'core-model-1-4:EQUIPMENT_CATEGORY_SMALL_FORMFACTOR_PLUGGABLE'
+                        connector:
+                          - equipment-augment-1-0:connector-pac:
+                              connector-kind: 'equipment-augment-1-0:CONNECTOR_KIND_TYPE_NOT_YET_DEFINED'
+                              sequence-id: 3
+                              outside-label: 'Label of the position not yet defined.'
+                            local-id: '1963217440'
+                        expected-equipment:
+                          - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                            manufactured-thing:
+                              equipment-type:
+                                part-type-identifier: 'RDH90120/D0210'
+                                version: 'R4A'
+                              manufacturer-properties:
+                                manufacturer-name: 'DELTA'
+                            local-id: '1954829311'
+                            structure:
+                              category: 'core-model-1-4:EQUIPMENT_CATEGORY_SMALL_FORMFACTOR_PLUGGABLE'
+                        uuid: '1921274879'
+                      - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                        contained-holder:
+                          - local-id: '1921266687'
+                            occupying-fru: '1921266687'
+                            equipment-augment-1-0:holder-pac:
+                              vendor-label: 'Sub-slot 1/3.3'
+                              sequence-id: 3
+                              outside-label: 'Label of the position not yet defined.'
+                        actual-equipment:
+                          operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                          manufactured-thing:
+                            equipment-instance:
+                              manufacture-date: '2016-11-24'
+                              serial-number: 'CR9J986961'
+                            equipment-type:
+                              part-type-identifier: 'ROJ 208 1311/1'
+                              version: 'R2A'
+                            manufacturer-properties:
+                              manufacturer-name: 'Ericsson'
+                          physical-properties:
+                            temperature: '33'
+                          structure:
+                            category: 'equipment-augment-1-0:EQUIPMENT_CATEGORY_MODEM'
+                        connector:
+                          - equipment-augment-1-0:connector-pac:
+                              connector-kind: 'equipment-augment-1-0:CONNECTOR_KIND_TYPE_NOT_YET_DEFINED'
+                              sequence-id: 2
+                              outside-label: 'Label of the position not yet defined.'
+                            local-id: '1879326719'
+                        expected-equipment:
+                          - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                            manufactured-thing:
+                              equipment-type:
+                                part-type-identifier: 'ROJ 208 1311/1'
+                                version: 'R2A'
+                              manufacturer-properties:
+                                manufacturer-name: 'Ericsson'
+                            local-id: '1954824191'
+                            structure:
+                              category: 'equipment-augment-1-0:EQUIPMENT_CATEGORY_MODEM'
+                        uuid: '1921269759'
+                    forwarding-domain:
+                      - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                        administrative-control: 'core-model-1-4:ADMINISTRATIVE_CONTROL_QUIESCENT'
+                        lifecycle-state: 'core-model-1-4:LIFECYCLE_STATE_INSTALLED'
+                        administrative-state: 'core-model-1-4:ADMINISTRATIVE_STATE_UNLOCKED'
+                        layer-protocol-name:
+                          - 'mac-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_MAC_LAYER'
+                        name:
+                          - value-name: 'fdName'
+                            value: 'Ethernet Switch'
+                        logical-termination-point:
+                          - 'MAC-2134638978'
+                          - 'MAC-2134647780'
+                          - 'MAC-2134639491'
+                        uuid: MACFD-CB
+                        mac-fd-1-0:mac-fd-pac:
+                          mac-fd-status:
+                            number-of-mac-registrations-cur: -1
+                            mac-address-cur: '90:55:ae:72:c5:d3'
+                            number-of-static-entries-cur: -1
+                            fd-status: 'mac-fd-1-0:FD_STATUS_TYPE_NOT_YET_DEFINED'
+                            number-of-dynamic-entries-cur: -1
+                          mac-fd-configuration:
+                            mac-address: '00:00:00:00:00:00'
+                            aging-time: 300
+                            fd-name: 'Forwarding Domain name not yet defined.'
+                            maximum-number-of-entries: -1
+                          mac-fd-capability:
+                            supported-maximum-number-of-entries: -1
+                    logical-termination-point:
+                      - layer-protocol:
+                          - air-interface-2-0:air-interface-pac:
+                              air-interface-configuration:
+                                mimo-is-on: false
+                                power-is-on: true
+                                alic-is-on: false
+                                atpc-thresh-lower: -30
+                                performance-monitoring-is-on: false
+                                acm-threshold-cross-alarm-list:
+                                  - seconds-for-clearing-alarm: -1
+                                    acm-threshold-cross-alarm-definition-number: 1
+                                    granularity-period: 'air-interface-2-0:GRANULARITY_PERIOD_TYPE_PERIOD-24-HOURS'
+                                    transmission-mode: '28000-128-v1'
+                                    seconds-for-raising-alarm: -1
+                                remote-air-interface-name: 'Air interface ID at the remote site not yet defined.'
+                                transmitter-is-on: false
+                                atpc-is-on: false
+                                air-interface-name: >
+                                  'You can add information in this Description field that will be
+                                  included in the Node Report, for example polarization, antenna
+                                  type or logging a site visit. Max allowed numbers of
+                                  characters in this Description field is 800.'
+                                duplex-distance: 0
+                                transmission-mode-max: '28000-128-v1'
+                                modulation-is-on: true
+                                expected-radio-signal-id:
+                                  alphanumeric-radio-signal-id: 'TRMB'
+                                  numeric-radio-signal-id: -1
+                                rx-frequency: -1
+                                tx-power: 0
+                                g-826-threshold-cross-alarm-list:
+                                  - alarm-raising-threshold: -1
+                                    g-826-value-kind: 'air-interface-2-0:G_826_TYPE_ES'
+                                    granularity-period: 'air-interface-2-0:GRANULARITY_PERIOD_TYPE_PERIOD-15-MIN'
+                                    alarm-clearing-threshold: -1
+                                atpc-thresh-upper: 99
+                                atpc-tx-power-min: 0
+                                loop-back-kind-on: 'air-interface-2-0:LOOP_BACK_TYPE_NONE'
+                                xlts-threshold-cross-alarm-list:
+                                  - xlts-threshold-cross-alarm-definition-number: 0
+                                    level-threshold-second-kind: 'air-interface-2-0:XLEVEL_THRESHOLD_SECOND_KIND_TYPE_RLTS'
+                                    xlts-level: 99
+                                    amount-of-seconds: -1
+                                    granularity-period: 'air-interface-2-0:GRANULARITY_PERIOD_TYPE_PERIOD-15-MIN'
+                                cryptographic-key: 'Cryptographic key not yet defined.'
+                                auto-freq-select-is-on: false
+                                maintenance-timer: 900
+                                adaptive-modulation-is-on: false
+                                transmission-mode-min: '28000-128-v1'
+                                xpic-is-on: false
+                                receiver-is-on: true
+                                auto-freq-select-range: -1
+                                tx-frequency: 0
+                                encryption-is-on: false
+                                transmitted-radio-signal-id:
+                                  alphanumeric-radio-signal-id: 'TRMA'
+                                  numeric-radio-signal-id: -1
+                            local-id: '2146697473'
+                            layer-protocol-name: 'air-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_AIR_LAYER'
+                        uuid: RF-2146697473
+                      - layer-protocol:
+                          - local-id: '2134639491'
+                            layer-protocol-name: 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+                            ethernet-container-2-0:ethernet-container-pac:
+                              ethernet-container-configuration:
+                                maximum-burst-size: 128
+                                loop-back-kind-on: 'ethernet-container-2-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                                interface-name: 'Newsample'
+                                fec-interleaver-kind: 'ethernet-container-2-0:FEC_INTERLEAVER_KIND_TYPE_NOT_YET_DEFINED'
+                                cryptographic-key: 'Cryptographic key not yet defined.'
+                                fec-word-size: -1
+                                maintenance-timer: -1
+                                ingress-policing-profile: ''
+                                header-compression-kind: 'no-compression'
+                                statistics-is-on: true
+                                performance-monitoring-is-on: true
+                                fec-interleaver-depth: 'ethernet-container-2-0:FEC_INTERLEAVER_DEPTH_TYPE_NOT_YET_DEFINED'
+                                fec-is-on: false
+                                queue-behavior-list:
+                                  - scheduler-kind: 'ethernet-container-2-0:SCHEDULER_KIND_TYPE_STRICT'
+                                    dropping-behavior-kind: 'ethernet-container-2-0:DROPPING_BEHAVIOR_KIND_TYPE_NOT_YET_DEFINED'
+                                    queue-depth: -1
+                                    weighting: -1
+                                    queue-name: 'ethernet-container-2-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
+                                interface-is-on: true
+                                explicit-congestion-notification-is-on: false
+                                egress-shaping-is-on: false
+                                fec-redundancy-size: 'ethernet-container-2-0:FEC_REDUNDANCY_SIZE_TYPE_NOT_YET_DEFINED'
+                                scheduler-profile: 'SCHED-1'
+                                qos-profile: ''
+                                maximum-information-rate: -1
+                                encryption-is-on: false
+                                bundling-is-on: false
+                        uuid: 'ETH-2134639491'
+                      - layer-protocol:
+                          - hybrid-mw-structure-2-0:hybrid-mw-structure-pac:
+                              hybrid-mw-structure-configuration:
+                                number-of-tdm-segments-to-be-reserved: 10
+                                performance-monitoring-is-on: false
+                                tdm-structure-kind: 'e1'
+                            local-id: '2146697857'
+                            layer-protocol-name: 'hybrid-mw-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_HYBRID_MW_STRUCTURE_LAYER'
+                        uuid: 'HMS-2146697857'
+                      - layer-protocol:
+                          - local-id: '2013265920'
+                            ip-interface-1-0:ip-interface-pac:
+                              ip-interface-configuration:
+                                maximum-burst-size: -1
+                                loop-back-kind-on: 'ip-interface-1-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                                interface-name: 'Interface name not yet defined.'
+                                l-3vpn-profile: ''
+                                maintenance-timer: -1
+                                ingress-policing-profile: ''
+                                statistics-is-on: true
+                                dhcp-client-is-on: false
+                                interface-is-on: true
+                                arp-proxy: 'ip-interface-1-0:ARP_PROXY_TYPE_NOT_YET_DEFINED'
+                                egress-shaping-is-on: false
+                                maximum-transmission-unit-ip: 1500
+                                qos-profile: ''
+                                maximum-information-rate: -1
+                            layer-protocol-name: 'ip-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_IP_LAYER'
+                        uuid: 'IP-2013265920'
+                      - layer-protocol:
+                          - local-id: '2134638979'
+                            layer-protocol-name: 'mac-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_MAC_LAYER'
+                            mac-interface-1-0:mac-interface-pac:
+                              mac-interface-configuration:
+                                link-loss-forwarding-is-on: false
+                                configured-mac-address: '00:00:00:00:00:00'
+                                mac-address-configuration-is-on: false
+                                loop-back-kind-on: 'mac-interface-1-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                                interface-name: ''
+                                flow-control-mode: 'mac-interface-1-0:FLOW_CONTROL_MODE_TYPE_NONE'
+                                broadcast-frame-suppression-is-on: false
+                                maintenance-timer: -1
+                                statistics-is-on: true
+                                maximum-frame-size: -1
+                                transmitted-frame-format: 'mac-interface-1-0:FRAME_FORMAT_TYPE_NOT_YET_DEFINED'
+                                link-loss-forwarding-delay: -1
+                                loop-detection-is-on: false
+                                loop-port-shut-down-is-on: false
+                                maximum-share-of-broadcast-frames: -1
+                                fragmentation-allowed: 'mac-interface-1-0:FRAGMENTATION_TYPE_NOT_YET_DEFINED'
+                        uuid: 'MAC-2134638979'
+                      - layer-protocol:
+                          - pure-ethernet-structure-2-0:pure-ethernet-structure-pac:
+                              pure-ethernet-structure-configuration:
+                                performance-monitoring-is-on: false
+                            local-id: '2147435392'
+                            layer-protocol-name: 'pure-ethernet-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_PURE_ETHERNET_STRUCTURE_LAYER'
+                        uuid: 'PES-2147435392'
+                      - layer-protocol:
+                          - local-id: '2147352962'
+                            layer-protocol-name: 'tdm-container-2-0:LAYER_PROTOCOL_NAME_TYPE_TDM_CONTAINER_LAYER'
+                            tdm-container-2-0:tdm-container-pac:
+                              tdm-container-configuration:
+                                loop-back-kind-on: 'tdm-container-2-0:LOOP_BACK_TYPE_NOT_YET_DEFINED'
+                                segment-number: 3
+                                interface-is-on: true
+                                interface-name: 'Interface name not yet defined.'
+                                maintenance-timer: -1
+                                tdm-container-kind: 'e1'
+                        uuid: 'TDM-2147352962'
+                      - layer-protocol:
+                          - vlan-interface-1-0:vlan-interface-pac:
+                              vlan-interface-configuration:
+                                drop-eligible-indicator-is-on: false
+                                default-priority: 0
+                                ingress-vlan-id-filtering-is-on: true
+                                egress-vlan-id-translation-is-on: false
+                                interface-name: 'Interface name not yet defined.'
+                                ingress-tag-filtering: 'vlan-interface-1-0:INGRESS_TAG_FILTERING_TYPE_VLAN_TAGGED_FRAMES_ONLY'
+                                admin-point-to-point: 'vlan-interface-1-0:ADMIN_POINT_TO_POINT_TYPE_NOT_YET_DEFINED'
+                                drop-eligible-encoding-is-required: false
+                                sub-layer-protocol-name: 'vlan-interface-1-0:SUB_LAYER_PROTOCOL_NAME_TYPE_C_VLAN_COMPONENT'
+                                received-priority-overwriting-is-on: false
+                                restricted-automated-vlan-registration-is-on: false
+                                vlan-id-translation-is-on: false
+                                pcp-bits-interpretation-kind: 'vlan-interface-1-0:PCP_BITS_INTERPRETATION_KIND_TYPE_8P0D'
+                                default-vlan-id: '0'
+                                interface-kind: 'vlan-interface-1-0:INTERFACE_KIND_TYPE_PROVIDER_NETWORK_PORT'
+                                service-access-priority-tagging-is-on: false
+                            local-id: '6'
+                            layer-protocol-name: 'vlan-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_VLAN_LAYER'
+                        uuid: 'VI-6'
+                      - layer-protocol:
+                          - local-id: '2134639491'
+                            layer-protocol-name: 'wire-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_WIRE_LAYER'
+                            wire-interface-2-0:wire-interface-pac:
+                              wire-interface-configuration:
+                                loop-back-kind-on: 'wire-interface-2-0:LOOP_BACK_TYPE_NONE'
+                                interface-name: 'Newsample'
+                                eee-is-on: false
+                                remote-wire-interface-name: 'Remote wire interface name not yet defined.'
+                                rx-sync-preference: 'wire-interface-2-0:RX_SYNC_PREFERENCE_TYPE_NOT_YET_DEFINED'
+                                maintenance-timer: -1
+                                auto-pmd-negotiation-is-on: false
+                                performance-monitoring-is-on: false
+                                auto-signal-ordering-is-on: true
+                                number-of-bip-errors-per-ses: -1
+                                fixed-signal-ordering-kind: 'wire-interface-2-0:SIGNAL_ORDERING_KIND_TYPE_NOT_YET_DEFINED'
+                                interface-is-on: true
+                                transceiver-configuration-list:
+                                  - wavelength: -1
+                                    transceiver-index: 0
+                                    transceiver-is-on: false
+                                short-reach-mode-is-on: false
+                                unidirectional-operation-is-on: false
+                                isolation-is-on: false
+                                fixed-pmd-kind: 'NOT_YET_DEFINED'
+                        uuid: 'ETY-2134639491'
+                      - layer-protocol:
+                          - local-id: '2147353225'
+                            layer-protocol-name: 'synchronization-1-0:LAYER_PROTOCOL_NAME_TYPE_SYNCHRONIZATION_LAYER'
+                        uuid: 'SYNC-2147353225'
+                    top-level-equipment:
+                      - '1'
+                    firmware-1-0:firmware-collection:
+                      download:
+                        filename: 'Filename not yet defined.'
+                        download-status: 'firmware-1-0:DOWNLOAD_STATUS_TYPE_IDLE'
+                        download-status-description: 'Status description not yet defined.'
+                      firmware-component-list:
+                        - local-id: 'R1.4'
+                          firmware-component-pac:
+                            firmware-component-capability:
+                              firmware-component-version: 'R30M05'
+                              firmware-component-name: 'CXP 901 2516/105'
+                              related-kinds-of-equipment-list:
+                                - 'NPU3 C'
+                              firmware-component-class: 'firmware-1-0:FIRMWARE_COMPONENT_CLASS_TYPE_APPLICATION_SOFTWARE'
+                              individual-activation-is-avail: false
+                            firmware-component-status:
+                              firmware-component-activation-date: '2010-11-20T14:00:00+01:00'
+                              firmware-component-status: 'firmware-1-0:FIRMWARE_COMPONENT_STATUS_TYPE_STAND_BY'
+          headers:
+            life-cycle-state:
+              schema:
+                type: string
+                enum:
+                  - "EXPERIMENTAL"
+                  - "OPERATIONAL"
+                  - "DEPRECATED"
+                  - "OBSOLETE"
+                  - "UNKNOWN"
+                  - "NOT_YET_DEFINED"
+                example: "EXPERIMENTAL"
+              description: >
+                'Life cycle state of the consumed service
+                find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-011/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
+        "400":
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+        "401":
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+        "403":
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+        "404":
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+        "500":
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+        default:
+          $ref: "#/components/responses/responseForErroredServiceRequests"
+      callbacks:
+        RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi:
+          URL: #[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-protocol]://[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/domain-name or /core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/ip-address/ipv-4-address]:[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-port][/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-c-is-mwdi-1-1-2-100/layer-protocol=0/operation-client-interface-1-0:operation-client-interface-pac/operation-client-interface-configuration/operation-name]
+            post:
+              parameters:
+                - $ref: "#/components/parameters/user"
+                - $ref: "#/components/parameters/originator"
+                - $ref: "#/components/parameters/x-correlator"
+                - $ref: "#/components/parameters/trace-indicator"
+                - $ref: "#/components/parameters/customer-journey"
+              responses:
+                "200":
+                  description: "List of connected devices provided"
+                  content:
+                    application/json:
+                      schema:
+                        type: object
+                        properties:
+                          core-model-1-4:control-construct:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/FILTERED_CONTROL_CONSTRUCT'
+                  headers:
+                    x-correlator:
+                      schema:
+                        type: string
+                        example: "550e8400-e29b-11d4-a716-446655440000"
+                      description: "UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request"
+                    exec-time:
+                      schema:
+                        type: integer
+                        example: 1100
+                      description: "Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds"
+                    backend-time:
+                      schema:
+                        type: integer
+                        example: 850
+                      description: "Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds"
+                    life-cycle-state:
+                      schema:
+                        type: string
+                        enum:
+                          - "EXPERIMENTAL"
+                          - "OPERATIONAL"
+                          - "DEPRECATED"
+                          - "OBSOLETE"
+                          - "UNKNOWN"
+                          - "NOT_YET_DEFINED"
+                        example: "EXPERIMENTAL"
+                      description: "Life cycle state of the consumed service"
+                "400":
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                "401":
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                "403":
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                "404":
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                "429":
+                  description: "Response in case of errored service requests due to too many parallel requests or too many requests per second."
+                  content:
+                    application/json:
+                      schema:
+                        type: object
+                        required:
+                          - code
+                          - message
+                        properties:
+                          code:
+                            type: integer
+                            format: int32
+                            enum:
+                              - 429
+                          message:
+                            type: string
+                            enum:
+                              - "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
+                        example:
+                          code: 429
+                          message: "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
+                "500":
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                default:
+                  $ref: "#/components/responses/responseForErroredServiceRequests"
 
 ########################################################################################################################
 #   Service Layer - Basic Part
@@ -10270,6 +10789,216 @@ components:
                       type: string
                     logical-termination-point:
                       type: string
+
+    FILTERED_CONTROL_CONSTRUCT:
+      type: object
+      properties:
+        profile-collection:
+          type: object
+        equipment-augment-1-0:control-construct-pac:
+          type: object
+        equipment:
+          type: array
+          items:
+            $ref: '#/components/schemas/EQUIPMENT'
+        forwarding-domain:
+          type: array
+          items:
+            type: object
+        logical-termination-point:
+          type: array
+          items:
+            $ref: '#/components/schemas/LOGICAL_TERMINATION_POINT'
+        top-level-equipment:
+          type: array
+          items:
+            type: object
+        firmware-1-0:firmware-collection:
+          type: object
+
+    EQUIPMENT:
+      type: object
+      required:
+        - uuid
+      properties:
+        uuid:
+          type: string
+        connector:
+          type: array
+          items:
+            $ref: '#/components/schemas/CONNECTOR'
+        contained-holder:
+          type: array
+          items:
+            $ref: '#/components/schemas/CONTAINED_HOLDER'
+        expected-equipment:
+          type: array
+          items:
+            $ref: '#/components/schemas/EXPECTED_EQUIPMENT'
+        actual-equipment:
+          type: object
+    CONNECTOR:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    CONTAINED_HOLDER:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    EXPECTED_EQUIPMENT:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    ACTUAL_EQUIPMENT:
+      type: object
+
+    LOGICAL_TERMINATION_POINT:
+      type: object
+      properties:
+        uuid:
+          type: string
+        layer-protocol:
+          type: array
+          items:
+            $ref: '#/components/schemas/LAYER_PROTOCOL'
+    LAYER_PROTOCOL:
+      oneOf:
+        - description: 'air-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'air-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_AIR_LAYER'
+            air-interface-2-0:air-interface-pac:
+              type: object
+              properties:
+                air-interface-configuration:
+                  type: object
+        - description: 'ethernet-container'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+            ethernet-container-2-0:ethernet-container-pac:
+              type: object
+              properties:
+                ethernet-container-configuration:
+                  type: object
+        - description: 'hybrid-mw-structure'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'hybrid-mw-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_HYBRID_MW_STRUCTURE_LAYER'
+            hybrid-mw-structure-2-0:hybrid-mw-structure-pac:
+              type: object
+              properties:
+                hybrid-mw-structure-configuration:
+                  type: object
+        - description: 'mac-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'mac-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_MAC_LAYER'
+            mac-interface-1-0:mac-interface-pac:
+              type: object
+              properties:
+                mac-interface-configuration:
+                  type: object
+        - description: 'pure-ethernet-structure'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'pure-ethernet-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_PURE_ETHERNET_STRUCTURE_LAYER'
+            pure-ethernet-structure-2-0:pure-ethernet-structure-pac:
+              type: object
+              properties:
+                pure-ethernet-structure-configuration:
+                  type: object
+        - description: 'vlan-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'vlan-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_VLAN_LAYER'
+            vlan-interface-1-0:vlan-interface-pac:
+              type: object
+              properties:
+                vlan-interface-configuration:
+                  type: object
+        - description: 'wire-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'wire-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_WIRE_LAYER'
+            wire-interface-2-0:wire-interface-pac:
+              type: object
+              properties:
+                wire-interface-configuration:
+                  type: object
+        - description: 'ip-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'ip-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_IP_LAYER'
+            ip-interface-1-0:ip-interface-pac:
+              type: object
+              properties:
+                ip-interface-configuration:
+                  type: object
+        - description: 'tdm-container'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'tdm-container-2-0:LAYER_PROTOCOL_NAME_TYPE_TDM_CONTAINER_LAYER'
+            tdm-container-2-0:tdm-container-pac:
+              type: object
+              properties:
+                tdm-container-configuration:
+                  type: object
+
   securitySchemes:
     apiKeyAuth:
       type: apiKey

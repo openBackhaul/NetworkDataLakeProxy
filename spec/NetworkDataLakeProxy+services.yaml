@@ -242,7 +242,6 @@ clients:
         basic:
         individual:
 
-
   - http-client:
       application-name: MicrowaveDeviceInventory
       release-number: 1.1.2
@@ -257,4 +256,3 @@ clients:
         uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-010
       - operation-name: /core-model-1-4:network-control-domain=cache/control-construct={mountName}
         uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-100
-

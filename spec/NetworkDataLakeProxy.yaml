@@ -566,9 +566,6 @@ paths:
                 default:
                   $ref: "#/components/responses/responseForErroredServiceRequests"
 
-
-
-
   /v1/provide-inventory-of-device:
     post:
       operationId: provideInventoryOfDevice
@@ -1089,9 +1086,6 @@ paths:
                   $ref: "#/components/responses/responseForErroredServiceRequests"
                 default:
                   $ref: "#/components/responses/responseForErroredServiceRequests"
-
-
-
 
 ########################################################################################################################
 #   Service Layer - Basic Part

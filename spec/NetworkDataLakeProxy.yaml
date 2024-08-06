@@ -10795,6 +10795,216 @@ components:
                       type: string
                     logical-termination-point:
                       type: string
+
+    FILTERED_CONTROL_CONSTRUCT:
+      type: object
+      properties:
+        profile-collection:
+          type: object
+        equipment-augment-1-0:control-construct-pac:
+          type: object
+        equipment:
+          type: array
+          items:
+            $ref: '#/components/schemas/EQUIPMENT'
+        forwarding-domain:
+          type: array
+          items:
+            type: object
+        logical-termination-point:
+          type: array
+          items:
+            $ref: '#/components/schemas/LOGICAL_TERMINATION_POINT'
+        top-level-equipment:
+          type: array
+          items:
+            type: object
+        firmware-1-0:firmware-collection:
+          type: object
+
+    EQUIPMENT:
+      type: object
+      required:
+        - uuid
+      properties:
+        uuid:
+          type: string
+        connector:
+          type: array
+          items:
+            $ref: '#/components/schemas/CONNECTOR'
+        contained-holder:
+          type: array
+          items:
+            $ref: '#/components/schemas/CONTAINED_HOLDER'
+        expected-equipment:
+          type: array
+          items:
+            $ref: '#/components/schemas/EXPECTED_EQUIPMENT'
+        actual-equipment:
+          type: object
+    CONNECTOR:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    CONTAINED_HOLDER:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    EXPECTED_EQUIPMENT:
+      type: object
+      required:
+        - local-id
+      properties:
+        local-id:
+          type: string
+    ACTUAL_EQUIPMENT:
+      type: object
+
+    LOGICAL_TERMINATION_POINT:
+      type: object
+      properties:
+        uuid:
+          type: string
+        layer-protocol:
+          type: array
+          items:
+            $ref: '#/components/schemas/LAYER_PROTOCOL'
+    LAYER_PROTOCOL:
+      oneOf:
+        - description: 'air-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'air-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_AIR_LAYER'
+            air-interface-2-0:air-interface-pac:
+              type: object
+              properties:
+                air-interface-configuration:
+                  type: object
+        - description: 'ethernet-container'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+            ethernet-container-2-0:ethernet-container-pac:
+              type: object
+              properties:
+                ethernet-container-configuration:
+                  type: object
+        - description: 'hybrid-mw-structure'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'hybrid-mw-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_HYBRID_MW_STRUCTURE_LAYER'
+            hybrid-mw-structure-2-0:hybrid-mw-structure-pac:
+              type: object
+              properties:
+                hybrid-mw-structure-configuration:
+                  type: object
+        - description: 'mac-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'mac-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_MAC_LAYER'
+            mac-interface-1-0:mac-interface-pac:
+              type: object
+              properties:
+                mac-interface-configuration:
+                  type: object
+        - description: 'pure-ethernet-structure'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'pure-ethernet-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_PURE_ETHERNET_STRUCTURE_LAYER'
+            pure-ethernet-structure-2-0:pure-ethernet-structure-pac:
+              type: object
+              properties:
+                pure-ethernet-structure-configuration:
+                  type: object
+        - description: 'vlan-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'vlan-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_VLAN_LAYER'
+            vlan-interface-1-0:vlan-interface-pac:
+              type: object
+              properties:
+                vlan-interface-configuration:
+                  type: object
+        - description: 'wire-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'wire-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_WIRE_LAYER'
+            wire-interface-2-0:wire-interface-pac:
+              type: object
+              properties:
+                wire-interface-configuration:
+                  type: object
+        - description: 'ip-interface'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'ip-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_IP_LAYER'
+            ip-interface-1-0:ip-interface-pac:
+              type: object
+              properties:
+                ip-interface-configuration:
+                  type: object
+        - description: 'tdm-container'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              enum:
+                - 'tdm-container-2-0:LAYER_PROTOCOL_NAME_TYPE_TDM_CONTAINER_LAYER'
+            tdm-container-2-0:tdm-container-pac:
+              type: object
+              properties:
+                tdm-container-configuration:
+                  type: object
+
   securitySchemes:
     apiKeyAuth:
       type: apiKey

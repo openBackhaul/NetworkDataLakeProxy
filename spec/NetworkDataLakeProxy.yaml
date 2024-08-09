@@ -10795,8 +10795,10 @@ components:
       properties:
         profile-collection:
           type: object
+          additionalProperties: true
         equipment-augment-1-0:control-construct-pac:
           type: object
+          additionalProperties: true
         equipment:
           type: array
           items:
@@ -10805,6 +10807,7 @@ components:
           type: array
           items:
             type: object
+            additionalProperties: true
         logical-termination-point:
           type: array
           items:
@@ -10813,13 +10816,14 @@ components:
           type: array
           items:
             type: object
+            additionalProperties: true
         firmware-1-0:firmware-collection:
           type: object
+          additionalProperties: true
 
     EQUIPMENT:
       type: object
-      required:
-        - uuid
+      additionalProperties: true
       properties:
         uuid:
           type: string
@@ -10839,30 +10843,29 @@ components:
           type: object
     CONNECTOR:
       type: object
-      required:
-        - local-id
+      additionalProperties: true
       properties:
         local-id:
           type: string
     CONTAINED_HOLDER:
       type: object
-      required:
-        - local-id
+      additionalProperties: true
       properties:
         local-id:
           type: string
     EXPECTED_EQUIPMENT:
       type: object
-      required:
-        - local-id
+      additionalProperties: true
       properties:
         local-id:
           type: string
     ACTUAL_EQUIPMENT:
       type: object
+      additionalProperties: true
 
     LOGICAL_TERMINATION_POINT:
       type: object
+      additionalProperties: true
       properties:
         uuid:
           type: string
@@ -10871,6 +10874,7 @@ components:
           items:
             $ref: '#/components/schemas/LAYER_PROTOCOL'
     LAYER_PROTOCOL:
+      additionalProperties: true
       oneOf:
         - description: 'air-interface'
           type: object
@@ -10886,6 +10890,7 @@ components:
               properties:
                 air-interface-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'ethernet-container'
           type: object
           properties:
@@ -10900,6 +10905,7 @@ components:
               properties:
                 ethernet-container-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'hybrid-mw-structure'
           type: object
           properties:
@@ -10914,6 +10920,7 @@ components:
               properties:
                 hybrid-mw-structure-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'mac-interface'
           type: object
           properties:
@@ -10928,6 +10935,7 @@ components:
               properties:
                 mac-interface-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'pure-ethernet-structure'
           type: object
           properties:
@@ -10942,6 +10950,7 @@ components:
               properties:
                 pure-ethernet-structure-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'vlan-interface'
           type: object
           properties:
@@ -10956,6 +10965,7 @@ components:
               properties:
                 vlan-interface-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'wire-interface'
           type: object
           properties:
@@ -10970,6 +10980,7 @@ components:
               properties:
                 wire-interface-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'ip-interface'
           type: object
           properties:
@@ -10984,6 +10995,7 @@ components:
               properties:
                 ip-interface-configuration:
                   type: object
+                  additionalProperties: true
         - description: 'tdm-container'
           type: object
           properties:
@@ -10998,6 +11010,25 @@ components:
               properties:
                 tdm-container-configuration:
                   type: object
+                  additionalProperties: true
+        - description: 'default, if none of above matching'
+          type: object
+          properties:
+            local-id:
+              type: string
+            layer-protocol-name:
+              type: string
+              not:
+                enum:
+                  - 'air-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_AIR_LAYER'
+                  - 'ethernet-container-2-0:LAYER_PROTOCOL_NAME_TYPE_ETHERNET_CONTAINER_LAYER'
+                  - 'hybrid-mw-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_HYBRID_MW_STRUCTURE_LAYER'
+                  - 'ip-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_IP_LAYER'
+                  - 'mac-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_MAC_LAYER'
+                  - 'pure-ethernet-structure-2-0:LAYER_PROTOCOL_NAME_TYPE_PURE_ETHERNET_STRUCTURE_LAYER'
+                  - 'tdm-container-2-0:LAYER_PROTOCOL_NAME_TYPE_TDM_CONTAINER_LAYER'
+                  - 'vlan-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_VLAN_LAYER'
+                  - 'wire-interface-2-0:LAYER_PROTOCOL_NAME_TYPE_WIRE_LAYER'
 
   securitySchemes:
     apiKeyAuth:

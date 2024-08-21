@@ -20,8 +20,8 @@
 			},
 			{
 				"serverName": "mwdi",
-				"server": "http://10.118.127.11:3008",
-				"authorizationCode": "Basic YWRtaW46YWRtaW5AMTIz",
+				"server": "http://localhost:3008",
+				"authorizationCode": "Basic xyz",
 				"operationKey": "Operation key not yet provided.",
 				"userName": "KMO",
 				"originator": "Postman-Netexplorer_TestcaseCollection",

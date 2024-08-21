@@ -880,7 +880,7 @@
                       {
                         "local-id": "0",
                         "release-number": "1.0.0",
-                        "release-date": "09.08.2024",
+                        "release-date": "21.08.2024",
                         "changes": "Initial version"
                       }
                     ]
@@ -908,7 +908,7 @@
                     "local-address": {
                       "ipv-4-address": "127.0.0.1"
                     },
-                    "local-port": 3001
+                    "local-port": 4019
                   }
                 }
               }
@@ -981,7 +981,7 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3001
+                    "remote-port": 4019
                   }
                 }
               }
@@ -1028,19 +1028,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3001
+                    "remote-port": 4019
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-0-000",
+            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-ro-2-1-0-000"
+              "ndlp-1-0-0-http-c-ro-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1060,12 +1060,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-0-001",
+            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-2-001",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-ro-2-1-0-000"
+              "ndlp-1-0-0-http-c-ro-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1085,12 +1085,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-0-002",
+            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-2-002",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-ro-2-1-0-000"
+              "ndlp-1-0-0-http-c-ro-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1110,12 +1110,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-0-003",
+            "uuid": "ndlp-1-0-0-op-c-bm-ro-2-1-2-003",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-ro-2-1-0-000"
+              "ndlp-1-0-0-http-c-ro-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1135,16 +1135,16 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-ro-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-ro-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-op-c-bm-ro-2-1-0-000",
-              "ndlp-1-0-0-op-c-bm-ro-2-1-0-001",
-              "ndlp-1-0-0-op-c-bm-ro-2-1-0-002",
-              "ndlp-1-0-0-op-c-bm-ro-2-1-0-003"
+              "ndlp-1-0-0-op-c-bm-ro-2-1-2-000",
+              "ndlp-1-0-0-op-c-bm-ro-2-1-2-001",
+              "ndlp-1-0-0-op-c-bm-ro-2-1-2-002",
+              "ndlp-1-0-0-op-c-bm-ro-2-1-2-003"
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-ro-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-ro-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1153,17 +1153,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "RegistryOffice",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-ro-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-ro-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-ro-2-1-0-000"
+              "ndlp-1-0-0-http-c-ro-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1179,19 +1179,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3024
+                    "remote-port": 3031
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-tar-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-tar-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-tar-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-tar-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1200,17 +1200,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "TypeApprovalRegister",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-tar-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-tar-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-tar-2-1-0-000"
+              "ndlp-1-0-0-http-c-tar-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1226,19 +1226,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3025
+                    "remote-port": 3032
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bs-eatl-2-1-0-000",
+            "uuid": "ndlp-1-0-0-op-c-bs-eatl-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-eatl-2-1-0-000"
+              "ndlp-1-0-0-http-c-eatl-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1259,13 +1259,13 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-eatl-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-eatl-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-op-c-bs-eatl-2-1-0-000"
+              "ndlp-1-0-0-op-c-bs-eatl-2-1-2-000"
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-eatl-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-eatl-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1274,17 +1274,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "ExecutionAndTraceLog",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-eatl-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-eatl-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-eatl-2-1-0-000"
+              "ndlp-1-0-0-http-c-eatl-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1300,19 +1300,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3026
+                    "remote-port": 3033
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bs-ol-2-1-0-000",
+            "uuid": "ndlp-1-0-0-op-c-bs-ol-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-ol-2-1-0-000"
+              "ndlp-1-0-0-http-c-ol-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1332,13 +1332,13 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-ol-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-ol-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-op-c-bs-ol-2-1-0-000"
+              "ndlp-1-0-0-op-c-bs-ol-2-1-2-000"
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-ol-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-ol-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1347,17 +1347,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "OamLog",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-ol-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-ol-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-ol-2-1-0-000"
+              "ndlp-1-0-0-http-c-ol-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1373,19 +1373,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3027
+                    "remote-port": 3034
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bs-aa-2-1-0-000",
+            "uuid": "ndlp-1-0-0-op-c-bs-aa-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-aa-2-1-0-000"
+              "ndlp-1-0-0-http-c-aa-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1405,13 +1405,13 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-aa-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-aa-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-op-c-bs-aa-2-1-0-000"
+              "ndlp-1-0-0-op-c-bs-aa-2-1-2-000"
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-aa-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-aa-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1420,17 +1420,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "AccessAdministration",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-aa-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-aa-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-aa-2-1-0-000"
+              "ndlp-1-0-0-http-c-aa-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1446,19 +1446,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3028
+                    "remote-port": 3035
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-000",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1478,12 +1478,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-001",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-001",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1503,12 +1503,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-002",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-002",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1528,12 +1528,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-003",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-003",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1553,12 +1553,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-004",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-004",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1578,12 +1578,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-0-005",
+            "uuid": "ndlp-1-0-0-op-c-bm-alt-2-1-2-005",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1603,18 +1603,18 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-alt-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-alt-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-000",
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-001",
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-002",
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-003",
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-004",
-              "ndlp-1-0-0-op-c-bm-alt-2-1-0-005"
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-000",
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-001",
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-002",
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-003",
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-004",
+              "ndlp-1-0-0-op-c-bm-alt-2-1-2-005"
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-alt-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-alt-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1623,17 +1623,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "ApplicationLayerTopology",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-alt-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-alt-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-alt-2-1-0-000"
+              "ndlp-1-0-0-http-c-alt-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1649,19 +1649,19 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3029
+                    "remote-port": 3036
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-http-c-okm-2-1-0-000",
+            "uuid": "ndlp-1-0-0-http-c-okm-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-0-tcp-c-okm-2-1-0-000"
+              "ndlp-1-0-0-tcp-c-okm-2-1-2-000"
             ],
             "layer-protocol": [
               {
@@ -1670,17 +1670,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "OperationKeyManagement",
-                    "release-number": "2.1.0"
+                    "release-number": "2.1.2"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-0-tcp-c-okm-2-1-0-000",
+            "uuid": "ndlp-1-0-0-tcp-c-okm-2-1-2-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-0-http-c-okm-2-1-0-000"
+              "ndlp-1-0-0-http-c-okm-2-1-2-000"
             ],
             "server-ltp": [
             ],
@@ -1696,7 +1696,7 @@
                         "ipv-4-address": "127.0.0.1"
                       }
                     },
-                    "remote-port": 3030
+                    "remote-port": 3037
                   }
                 }
               }
@@ -1733,7 +1733,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-0-000"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-2-000"
                   }
                 ]
               },
@@ -1763,7 +1763,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-0-000"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-2-000"
                   }
                 ]
               },
@@ -1933,7 +1933,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-eatl-2-1-0-000"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-eatl-2-1-2-000"
                   }
                 ]
               },
@@ -1958,7 +1958,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-ol-2-1-0-000"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-ol-2-1-2-000"
                   }
                 ]
               },
@@ -1988,7 +1988,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-aa-2-1-0-000"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bs-aa-2-1-2-000"
                   }
                 ]
               },
@@ -2018,7 +2018,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-0-001"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-2-001"
                   }
                 ]
               },
@@ -2048,7 +2048,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-0-002"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-2-002"
                   }
                 ]
               },
@@ -2078,7 +2078,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-0-003"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-ro-2-1-2-003"
                   }
                 ]
               },
@@ -2158,7 +2158,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-001"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-001"
                   }
                 ]
               },
@@ -2188,7 +2188,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-002"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-002"
                   }
                 ]
               },
@@ -2213,7 +2213,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-003"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-003"
                   }
                 ]
               },
@@ -2238,7 +2238,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-004"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-004"
                   }
                 ]
               },
@@ -2268,7 +2268,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-005"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-005"
                   }
                 ]
               },
@@ -2293,7 +2293,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-001"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-001"
                   }
                 ]
               },
@@ -2318,7 +2318,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-002"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-002"
                   }
                 ]
               },
@@ -2343,7 +2343,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-003"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-003"
                   }
                 ]
               },
@@ -2368,7 +2368,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-004"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-004"
                   }
                 ]
               },
@@ -2393,7 +2393,7 @@
                   {
                     "local-id": "200",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_OUTPUT",
-                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-0-005"
+                    "logical-termination-point": "ndlp-1-0-0-op-c-bm-alt-2-1-2-005"
                   }
                 ]
               },
@@ -2413,7 +2413,7 @@
                   {
                     "local-id": "100",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
-                    "logical-termination-point": "nep-1-0-0-op-s-is-010"
+                    "logical-termination-point": "ndlp-1-0-0-op-s-is-010"
                   },
                   {
                     "local-id": "200",
@@ -2423,7 +2423,7 @@
                 ]
               },
               {
-                "uuid": "ndlp-1-0-0-op-fc-is-010",
+                "uuid": "ndlp-1-0-0-op-fc-is-011",
                 "name": [
                   {
                     "value-name": "ForwardingKind",
@@ -2438,7 +2438,7 @@
                   {
                     "local-id": "100",
                     "port-direction": "core-model-1-4:PORT_DIRECTION_TYPE_INPUT",
-                    "logical-termination-point": "nep-1-0-0-op-s-is-011"
+                    "logical-termination-point": "ndlp-1-0-0-op-s-is-011"
                   },
                   {
                     "local-id": "200",

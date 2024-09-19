@@ -1031,6 +1031,7 @@ paths:
                 - $ref: "#/components/parameters/x-correlator"
                 - $ref: "#/components/parameters/trace-indicator"
                 - $ref: "#/components/parameters/customer-journey"
+                - $ref: "#/components/parameters/mount-name"
               responses:
                 "200":
                   description: "List of connected devices provided"
@@ -10387,6 +10388,16 @@ components:
         type: string
         example: 'Unknown value'
       description: 'Holds information supporting customer’s journey to which the execution applies'
+    mount-name:  
+      name: mount-name
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '222250001'
+      description: >
+                    'The mount-name of the device that is addressed by this callback
+                    from {$request.body#mount-name}'
   responses:
     responseForErroredServiceRequests:
       description: 'Response in case of errored service requests'

@@ -10395,8 +10395,7 @@ components:
       schema:
         type: string
         example: '222250001'
-      description: >
-                    'The mount-name of the device that is addressed by this callback
+      description:  'The mount-name of the device that is addressed by this callback
                     from {$request.body#mount-name}'
   responses:
     responseForErroredServiceRequests:

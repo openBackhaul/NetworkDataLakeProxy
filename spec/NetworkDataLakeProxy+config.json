@@ -1701,7 +1701,106 @@
                 }
               }
             ]
-          }
+          },
+          {
+            "uuid": "uuid: ndlp-1-0-0-op-c-is-mwdi-1-1-2-010",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-0-0-http-c-mwdi-1-1-2-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-client-interface-1-0:operation-client-interface-pac": {
+                  "operation-client-interface-configuration": {
+                    "operation-name": "/v1/provide-list-of-connected-devices",
+                    "operation-key": "Operation key not yet provided."
+                  },
+                  "operation-client-interface-status": {
+                    "operational-state": "operation-client-interface-1-0:OPERATIONAL_STATE_TYPE_NOT_YET_DEFINED",
+                    "life-cycle-state": "operation-client-interface-1-0:LIFE_CYCLE_STATE_TYPE_NOT_YET_DEFINED"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "ndlp-1-0-0-op-c-is-mwdi-1-1-2-100",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
+            "client-ltp": [
+            ],
+            "server-ltp": [
+              "ndlp-1-1-0-http-c-mwdi-1-1-2-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "operation-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_OPERATION_LAYER",
+                "operation-client-interface-1-0:operation-client-interface-pac": {
+                  "operation-client-interface-configuration": {
+                    "operation-name": "/core-model-1-4:network-control-domain=cache/control-construct={mountName}",
+                    "operation-key": "Operation key not yet provided."
+                  },
+                  "operation-client-interface-status": {
+                    "operational-state": "operation-client-interface-1-0:OPERATIONAL_STATE_TYPE_NOT_YET_DEFINED",
+                    "life-cycle-state": "operation-client-interface-1-0:LIFE_CYCLE_STATE_TYPE_NOT_YET_DEFINED"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "ndlp-1-1-0-http-c-mwdi-1-1-2-000",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
+            "client-ltp": [
+              "ndlp-1-0-0-op-c-is-mwdi-1-1-2-010",
+              "ndlp-1-0-0-op-c-is-mwdi-1-1-2-100"
+            ],
+            "server-ltp": [
+                "ndlp-1-1-0-tcp-c-mwdi-1-1-2-000"
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "http-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_HTTP_LAYER",
+                "http-client-interface-1-0:http-client-interface-pac": {
+                  "http-client-interface-configuration": {
+                    "application-name": "MicroWaveDeviceInventory",
+                    "release-number": "1.1.2"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "ndlp-1-1-0-tcp-c-mwdi-1-1-2-000",
+            "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
+            "client-ltp": [
+                "ndlp-1-1-0-http-c-mwdi-1-1-2-000"
+            ],
+            "server-ltp": [
+            ],
+            "layer-protocol": [
+              {
+                "local-id": "0",
+                "layer-protocol-name": "tcp-client-interface-1-0:LAYER_PROTOCOL_NAME_TYPE_TCP_LAYER",
+                "tcp-client-interface-1-0:tcp-client-interface-pac": {
+                  "tcp-client-interface-configuration": {
+                    "remote-protocol": "tcp-client-interface-1-0:PROTOCOL_TYPE_HTTP",
+                    "remote-address": {
+                      "ip-address": {
+                        "ipv-4-address": "1.1.4.15"
+                      }
+                    },
+                    "remote-port": 4015
+                  }
+                }
+              }
+            ]
+          }          
         ],
         "forwarding-domain": [
           {

@@ -58,7 +58,7 @@ servers:
           uuid: ndlp-1-0-0-op-s-is-011
   http-server:
     own-application-name: NetworkDataLakeProxy
-    own-release-number: 1.0.0
+    own-release-number: 1.0.1
     uuid: ndlp-1-0-0-http-s-000
   tcp-server:
     - description: Without TLS layer
@@ -72,7 +72,7 @@ clients:
 
   - http-client:
       application-name: OldRelease
-      release-number: 1.0.0
+      release-number: 1.0.1
       uuid: ndlp-1-0-0-http-c-or-1-0-0-000
     tcp-client:
       remote-protocol: http
@@ -91,7 +91,7 @@ clients:
 
   - http-client:
       application-name: NewRelease
-      release-number: 1.0.0
+      release-number: 1.0.1
       uuid: ndlp-1-0-0-http-c-nr-1-0-0-000
     tcp-client:
       remote-protocol: http

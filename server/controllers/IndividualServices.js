@@ -124,7 +124,7 @@ function buildForwardedResponse(response, responseCode, responseBody, responseHe
     }
 
     // In error cases we return code/message objects as response.
-    if (responseCode !== 200) {
+    if (responseCode !== 200 && responseCode !== 204) {
       responseBody = {
         code: responseCode,
         message: buildMessage(responseBody)

@@ -9,7 +9,7 @@ function getMockResultData(data)
 {
   return {
     code: 200,
-    message: JSON.stringify(data),
+    message: data,
     headers: {},
     operationName: 'operationName'
   };
@@ -25,19 +25,18 @@ describe('provideInventoryOfDevice', () => {
 
     it('should call getDataFromMWDI with correct arguments and return the result', async () => {
         const mockResult = {
-          "core-model-1-4:control-construct": {
-//            {
-//              "profile-collection": {
-//                "profile": []
-//              }
-//            }
-          }
+          "core-model-1-4:control-construct": [
+            // {
+            //   "profile-collection": {
+            //     "profile": []
+            //   }
+            // }
+          ]
         };
 
-        const expectedResult = JSON.stringify({
-          "core-model-1-4:control-construct":
-            {}
-        });
+        const expectedResult = {
+          "core-model-1-4:control-construct": []
+        };
 
         const input = {"mount-name": "305251234"};
 
@@ -58,7 +57,7 @@ describe('provideInventoryOfDevice', () => {
 
         // Checks whether the result is correct
         expect(result.code).toBe(200);
-        expect(result.message).toBe(expectedResult);
+        expect(result.message).toStrictEqual(expectedResult);
     });
 
     it('should handle errors and throw an exception if getDataFromMWDI fails', async () => {

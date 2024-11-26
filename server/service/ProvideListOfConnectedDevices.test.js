@@ -9,7 +9,7 @@ function getMockResultData(data)
 {
   return {
     code: 200,
-    message: JSON.stringify(data),
+    message: data,
     headers: {},
     operationName: 'operationName'
   };

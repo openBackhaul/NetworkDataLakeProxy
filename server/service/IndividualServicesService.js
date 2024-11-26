@@ -7,6 +7,10 @@ const requestUtil = require("./individualServices/RequestUtil");
 const controlConstructUtil = require("./individualServices/ControlConstructUtil");
 const responseCodeEnum = require('onf-core-model-ap/applicationPattern/rest/server/ResponseCode');
 const logger = require('./LoggingService.js').getLogger();
+const fs = require('fs');
+const yaml = require('js-yaml');
+const Ajv = require('ajv');
+const $RefParser = require('@apidevtools/json-schema-ref-parser');
 
 
 /**
@@ -65,8 +69,8 @@ function copyNode(nodeName, node, nodeExpression, filteredConstruct) {
   }
 }
 
-exports.filterControlConstruct = function filterControlConstruct(data) {
 // Filter Control Construct
+exports.filterControlConstructByNodes = function filterControlConstruct(data) {
   // filter ControlConstruct data for:
   // - physical inventory (equipment, firmware)
   // - logical inventory (ltpConfiguration, profiles, forwarding)
@@ -96,6 +100,116 @@ exports.filterControlConstruct = function filterControlConstruct(data) {
   }
 
   return data;
+}
+
+
+// load YAML schema and prepare the `$ref` resolution
+const loadOpenAPISchema = async (filePath) => {
+  const yamlContent = fs.readFileSync(filePath, 'utf8');
+  const schema = yaml.load(yamlContent);
+
+  // resolve `$ref` references
+  return $RefParser.dereference(schema);
+}
+
+let cachedValidationFilter = undefined;
+
+async function getValidationFilter() {
+  if (!cachedValidationFilter) {
+    try {
+      const schemaPath = 'api/openapi.yaml'; // OpenAPI Spec path
+      const responseSchema = 'inline_response_200_1'; // response schema of /v1/provide-inventory-data-of-device
+
+      const openAPISchema = await loadOpenAPISchema(schemaPath);
+      const schema = openAPISchema.components.schemas[responseSchema];
+
+      const ajv = new Ajv({
+          strict: false,
+          allErrors: true,
+          // remove additional fields not matching the schema (mostly useless because of the additionalProperties option)
+          removeAdditional: true
+      });
+
+      // Compile the specific schema
+      cachedValidationFilter = ajv.compile(schema);
+    } catch (exception) {
+      logger.error(exception, "createValidationFilter was not successful");
+      return null;
+    }
+  }
+
+  return cachedValidationFilter;
+}
+
+// remove fields, which are not present in the schema
+const filterExtraFields = (data, schema) => {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    return data; // Do not modify primitive values or arrays
+  }
+
+  const filteredData = {};
+
+  // Case 1: Schema with `oneOf`
+  if (schema.oneOf && Array.isArray(schema.oneOf)) {
+    // Try to find the matching subschema
+    for (const subSchema of schema.oneOf) {
+      const ajv = new Ajv({ allErrors: true, strict: false });
+      const validate = ajv.compile(subSchema);
+      if (validate(data)) {
+        // Apply the matching subschema
+        return filterExtraFields(data, subSchema);
+      }
+    }
+    console.warn('No matching schema found in oneOf.');
+    return {}; // If no schema matches, return an empty object
+  }
+
+  // Case 2: Schema with `properties`
+  const properties = schema.properties || {};
+
+  for (const key of Object.keys(data)) {
+    if (properties[key]) {
+      // Key is explicitly defined in `properties`
+      const propertySchema = properties[key];
+      if (propertySchema.type === 'object') {
+        // Process nested objects
+        filteredData[key] = filterExtraFields(data[key], propertySchema);
+      } else if (propertySchema.type === 'array' && propertySchema.items) {
+        // Process arrays recursively
+        filteredData[key] = Array.isArray(data[key])
+          ? data[key].map((item) => filterExtraFields(item, propertySchema.items))
+          : data[key];
+      } else {
+        // Copy primitive values
+        filteredData[key] = data[key];
+      }
+    }
+
+    // Ignore fields that are not defined in properties
+  }
+
+  return filteredData;
+}
+
+
+// Filter Control Construct by API schema
+exports.filterControlConstructBySchema = async function filterControlConstruct(data) {
+  const validationFilter = await getValidationFilter();
+
+//  fs.writeFileSync("data1.json", JSON.stringify(data, null, 2));
+
+  const isValid = validationFilter(data);
+  if (!isValid) {
+    logger.error('Validation error:', validationFilter.errors);
+    return null;
+  }
+//  fs.writeFileSync("data2.json", JSON.stringify(data, null, 2));
+
+  const filteredData = filterExtraFields(data, validationFilter.schema);
+
+//  fs.writeFileSync("data3.json", JSON.stringify(filteredData, null, 2));
+
+  return filteredData;
 }
 
 /**
@@ -138,10 +252,10 @@ exports.provideInventoryOfDevice = async function(requestUrl, body) {
 
     let ret = await requestHandler.getDataFromMWDI(requestUrl, callbackName, body, fieldsFilter);
 
-// filtering is done in the MWDI by the fields filter.
-//    if (ret.code === responseCodeEnum.code.OK) {
-//      ret.message = this.filterControlConstruct(ret.message);
-//    }
+    // Filter Control Construct
+    if (ret.code === responseCodeEnum.code.OK) {
+      ret.message = await this.filterControlConstructBySchema(ret.message);
+    }
 
     return ret;
   } finally {

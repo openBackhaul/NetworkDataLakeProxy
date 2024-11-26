@@ -14,6 +14,9 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.7.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
     "oas3-tools": "^2.2.3",

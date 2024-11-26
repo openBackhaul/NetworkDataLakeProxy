@@ -42,7 +42,8 @@ exports.startPostRequest = async function (targetUrl, payload, operationName, op
                 operationName,
                 response.status,
                 payload,
-                response.data);
+                response.data,
+                targetUrl);
 
             return true;
         })
@@ -59,7 +60,8 @@ exports.startPostRequest = async function (targetUrl, payload, operationName, op
                 operationName,
                 e.response && e.response.status? e.response.status: responseCodeEnum.code.INTERNAL_SERVER_ERROR,
                 payload,
-                e);
+                e,
+                targetUrl);
 
             return false;
         });
@@ -94,7 +96,8 @@ exports.startPostDataRequest = async function (targetUrl, payload, operationName
                 operationName,
                 response.status,
                 payload,
-                response.data);
+                response.data,
+                targetUrl);
 
             return {code: response.status, message: response.data, headers: requestHeader};
         })
@@ -112,7 +115,8 @@ exports.startPostDataRequest = async function (targetUrl, payload, operationName
                 operationName,
                 (e.response && e.response.status) ? e.response.status : responseCodeEnum.code.INTERNAL_SERVER_ERROR,
                 payload,
-                e);
+                e,
+                targetUrl);
 
             //throw e; // call handleError() in the upper catch handler in order to log using recordServiceRequest()
             return {code: response?.status, message: response?.data, headers: requestHeader};
@@ -155,7 +159,8 @@ exports.startGetRequest = async function (targetUrl, operationName, operationKey
                 operationName,
                 response.status,
                 undefined,
-                response.data);
+                response.data,
+                targetUrl);
 
             return {code: response.status, message: response.data, headers: requestHeader};
         })
@@ -173,7 +178,8 @@ exports.startGetRequest = async function (targetUrl, operationName, operationKey
                 operationName,
                 response.status ?? responseCodeEnum.code.INTERNAL_SERVER_ERROR,
                 undefined,
-                response.data ?? e);
+                response.data ?? e,
+                targetUrl);
 
             //throw e; // call handleError() in the upper catch handler in order to log using recordServiceRequest()
             return {code: response?.status, message: response?.data, headers: requestHeader};

@@ -23,20 +23,20 @@ describe('provideListOfConnectedDevices', () => {
               headers: {}
           };
 
-        // Setzt den Rückgabewert des Mocks
+        // set the mock return value
         axios.post.mockResolvedValue(axiosMockResponse);
 
-        // Führt die Funktion aus
+        // Execute the function
         const result = await individualServicesService.provideListOfConnectedDevices(mockRequestUrl);
 
-        // Überprüft, ob die Funktion mit den richtigen Parametern aufgerufen wurde
+        // Checks whether the function was called with the correct parameters
         expect(axios.post).toHaveBeenCalledWith(
           expect.stringMatching(/.*\/v1\/provide-list-of-connected-devices/),
           {},
           expect.any(Object)
         );
 
-        // Überprüft, ob das Ergebnis korrekt ist
-        expect(result.message).toBe(expectedResult);
+        // Checks whether the result is correct
+        expect(result.message).toStrictEqual(expectedResult);
     });
 });

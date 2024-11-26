@@ -26,30 +26,30 @@ describe('provideListOfConnectedDevices', () => {
                 "105258888"
             ]};
 
-        // Setzt den Rückgabewert des Mocks
+        // set the mock return value
         requestHandler.postRequestDataFromMWDI.mockResolvedValue(getMockResultData(expectedResult));
 
-        // Führt die Funktion aus
+        // Execute the function
         const result = await individualServicesService.provideListOfConnectedDevices(mockRequestUrl);
 
-        // Überprüft, ob die Funktion mit den richtigen Parametern aufgerufen wurde
+        // Checks whether the function was called with the correct parameters
         expect(requestHandler.postRequestDataFromMWDI).toHaveBeenCalledWith(
           mockRequestUrl,
           'PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList',
           {}
         );
 
-        // Überprüft, ob das Ergebnis korrekt ist
-        expect(result.message).toBe(JSON.stringify(expectedResult));
+        // Checks whether the result is correct
+        expect(result.message).toStrictEqual(expectedResult);
     });
 
     it('should handle errors and throw an exception if postRequestDataFromMWDI fails', async () => {
         const mockError = new Error('Request failed');
 
-        // Mockt einen Fehlerfall
+        // Mock an error case
         requestHandler.postRequestDataFromMWDI.mockRejectedValue(mockError);
 
-        // Überprüft, ob die Funktion den Fehler korrekt wirft
+        // Checks whether the function throws the error correctly
         await expect(individualServicesService.provideListOfConnectedDevices(mockRequestUrl)).rejects.toThrow('Request failed');
     });
 });

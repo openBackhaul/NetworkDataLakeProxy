@@ -41,14 +41,14 @@ describe('provideInventoryOfDevice', () => {
 
         const input = {"mount-name": "305251234"};
 
-        // Setzt den Rückgabewert des Mocks
+        // set the mock return value
         requestHandler.getDataFromMWDI.mockResolvedValue(getMockResultData(mockResult));
 
-        // Führt die Funktion aus
+        // Execute the function
         await wait(1000);
         const result = await individualServicesService.provideInventoryOfDevice(mockRequestUrl, input);
 
-        // Überprüft, ob die Funktion mit den richtigen Parametern aufgerufen wurde
+        // Checks whether the function was called with the correct parameters
         expect(requestHandler.getDataFromMWDI).toHaveBeenCalledWith(
           mockRequestUrl,
           'RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi',
@@ -56,7 +56,7 @@ describe('provideInventoryOfDevice', () => {
           "equipment-augment-1-0:control-construct-pac;top-level-equipment;equipment(uuid;operational-state;connector(local-id;equipment-augment-1-0:connector-pac(connector-kind;outside-label;sequence-id));contained-holder(occupying-fru;local-id;equipment-augment-1-0:holder-pac(vendor-label;outside-label;sequence-id));expected-equipment(structure(category);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version));local-id;operational-state);actual-equipment(structure(category);physical-properties(temperature);manufactured-thing(manufacturer-properties(manufacturer-name);equipment-type(part-type-identifier;version);equipment-instance(manufacture-date;serial-number));operational-state));firmware-1-0:firmware-collection;logical-termination-point(uuid;layer-protocol(local-id;layer-protocol-name;air-interface-2-0:air-interface-pac(air-interface-configuration);ethernet-container-2-0:ethernet-container-pac(ethernet-container-configuration);hybrid-mw-structure-2-0:hybrid-mw-structure-pac(hybrid-mw-structure-configuration);ip-interface-1-0:ip-interface-pac(ip-interface-configuration);mac-interface-1-0:mac-interface-pac(mac-interface-configuration);pure-ethernet-structure-2-0:pure-ethernet-structure-pac(pure-ethernet-structure-configuration);tdm-container-2-0:tdm-container-pac(tdm-container-configuration);vlan-interface-1-0:vlan-interface-pac(vlan-interface-configuration);wire-interface-2-0:wire-interface-pac(wire-interface-configuration)));profile-collection;forwarding-domain"
         );
 
-        // Überprüft, ob das Ergebnis korrekt ist
+        // Checks whether the result is correct
         expect(result.code).toBe(200);
         expect(result.message).toBe(expectedResult);
     });
@@ -64,10 +64,10 @@ describe('provideInventoryOfDevice', () => {
     it('should handle errors and throw an exception if getDataFromMWDI fails', async () => {
         const mockError = new Error('Request failed');
 
-        // Mockt einen Fehlerfall
+        // Mock an error case
         requestHandler.getDataFromMWDI.mockRejectedValue(mockError);
 
-        // Überprüft, ob die Funktion den Fehler korrekt wirft
+        // Checks whether the function throws the error correctly
         await wait(1000);
         await expect(individualServicesService.provideInventoryOfDevice(mockRequestUrl)).rejects.toThrow('Request failed');
     });
@@ -93,7 +93,7 @@ describe('provideInventoryOfDevice throttling', () => {
     // Set the Mock return value
     requestHandler.getDataFromMWDI.mockResolvedValue(getMockResultData(mockResult));
 
-    // Der erste Aufruf muss erfolgreich sein.
+    // The first call must be successful.
     await wait(1000);
     let result = await individualServicesService.provideInventoryOfDevice(mockRequestUrl, input);
     expect(result.code).toBe(200);
@@ -112,7 +112,7 @@ describe('provideInventoryOfDevice throttling', () => {
     // Only one call shall be accepted.
     expect(requestHandler.getDataFromMWDI).toHaveBeenCalledTimes(1);
 
-    // Nach Ablauf einer Sekunde muss der nächste Aufruf wieder erfolgreich ablaufen.
+    // After one second has elapsed, the next call must be successful again.
 
     await wait(1000);
     result = await individualServicesService.provideInventoryOfDevice(mockRequestUrl, input);

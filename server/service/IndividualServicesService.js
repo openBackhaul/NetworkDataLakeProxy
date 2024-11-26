@@ -65,8 +65,8 @@ function copyNode(nodeName, node, nodeExpression, filteredConstruct) {
   }
 }
 
-// Filterung von Control Constructs
 exports.filterControlConstruct = function filterControlConstruct(data) {
+// Filter Control Construct
   // filter ControlConstruct data for:
   // - physical inventory (equipment, firmware)
   // - logical inventory (ltpConfiguration, profiles, forwarding)

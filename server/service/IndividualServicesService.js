@@ -252,10 +252,11 @@ exports.provideInventoryOfDevice = async function(requestUrl, body) {
 
     let ret = await requestHandler.getDataFromMWDI(requestUrl, callbackName, body, fieldsFilter);
 
-    // Filter Control Construct
-    if (ret.code === responseCodeEnum.code.OK) {
-      ret.message = await this.filterControlConstructBySchema(ret.message);
-    }
+    // Filtering is done in the MWDI by the fields filter.
+    // // Filter Control Construct
+    // if (ret.code === responseCodeEnum.code.OK) {
+    //   ret.message = await this.filterControlConstructBySchema(ret.message);
+    // }
 
     return ret;
   } finally {

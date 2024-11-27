@@ -10839,7 +10839,7 @@ components:
         top-level-equipment:
           type: array
           items:
-            type: object
+            type: string
             additionalProperties: true
         firmware-1-0:firmware-collection:
           type: object

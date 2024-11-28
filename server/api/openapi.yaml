@@ -1660,7 +1660,7 @@ paths:
       security:
       - basicAuth: []
       x-swagger-router-controller: IndividualServices
-  /v1/provide-inventory-data-of-device:
+  /v1/provide-inventory-of-device:
     post:
       tags:
       - IndividualServices

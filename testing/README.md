@@ -1,10 +1,10 @@
-# MacAddressTableRecorder Testing
+# NetworkDataLakeProxy Testing
 
 ### Test Cases (Postman Export)
-- [MacAddressTableRecorder+testcases](./MacAddressTableRecorder+testcases.json)
+- [NetworkDataLakeProxy+testcases](./NetworkDataLakeProxy+testcases.json)
 
 ### DATAfile
-- [MacAddressTableRecorder+data](./MacAddressTableRecorder+data.json)
+- [NetworkDataLakeProxy+data](./NetworkDataLakeProxy+data.json)
 
 ### Comments
 ./.

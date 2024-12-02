@@ -1,3 +1,78 @@
+  /v1/provide-list-of-connected-devices:
+    type: object
+    properties:
+      mount-name-list:
+        type: array
+          items:
+            type: string
+
+
+
+
+
+
+  /v1/provide-inventory-of-device:
+    type: object
+      properties:
+        core-model-1-4:control-construct:
+        type: array
+        items:
+          type: object
+          properties:
+            profile-collection:
+              type: object
+              additionalProperties: true
+            equipment-augment-1-0:control-construct-pac:
+              type: object
+              additionalProperties: true
+            equipment:
+              type: array
+              items:
+                    EQUIPMENT:
+                type: object
+                additionalProperties: true
+                properties:
+                uuid:
+                  type: string
+                connector:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CONNECTOR'
+                contained-holder:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CONTAINED_HOLDER'
+                expected-equipment:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EXPECTED_EQUIPMENT'
+                actual-equipment:
+                  type: object
+            forwarding-domain:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            logical-termination-point:
+              type: array
+              items:
+                $ref: '#/components/schemas/LOGICAL_TERMINATION_POINT'
+            top-level-equipment:
+              type: array
+              items:
+                type: string
+                additionalProperties: true
+            firmware-1-0:firmware-collection:
+              type: object
+              additionalProperties: true
+
+
+
+
+
+
+
+
 /v1/provide-mac-table-of-all-devices:
   type: array
   items:

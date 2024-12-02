@@ -871,7 +871,7 @@
                 "http-server-interface-1-0:http-server-interface-pac": {
                   "http-server-interface-capability": {
                     "application-name": "NetworkDataLakeProxy",
-                    "release-number": "1.0.0",
+                    "release-number": "1.0.1",
                     "application-purpose": "The NDLP provides an interface toward the NetworkDataLake.",
                     "data-update-period": "http-server-interface-1-0:DATA_UPDATE_PERIOD_TYPE_REAL_TIME",
                     "owner-name": "Thomas Seitz",
@@ -882,6 +882,12 @@
                         "release-number": "1.0.0",
                         "release-date": "21.08.2024",
                         "changes": "Initial version"
+                      },
+                      {
+                        "local-id": "0",
+                        "release-number": "1.0.1",
+                        "release-date": "30.09.2024",
+                        "changes": "Added bugfixes to spec"
                       }
                     ]
                   }

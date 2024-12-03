@@ -161,6 +161,12 @@ paths:
           $ref: '#/components/responses/responseForErroredServiceRequests'
         '500':
           $ref: '#/components/responses/responseForErroredServiceRequests'
+        '502':
+          $ref: '#/components/responses/502'
+        '531':
+          $ref: '#/components/responses/531'
+        '532':
+          $ref: '#/components/responses/532'
         default:
           $ref: '#/components/responses/responseForErroredServiceRequests'
       callbacks:
@@ -471,41 +477,47 @@ paths:
               schema:
                 type: string
                 enum:
-                  - "EXPERIMENTAL"
-                  - "OPERATIONAL"
-                  - "DEPRECATED"
-                  - "OBSOLETE"
-                  - "UNKNOWN"
-                  - "NOT_YET_DEFINED"
-                example: "EXPERIMENTAL"
+                  - 'EXPERIMENTAL'
+                  - 'OPERATIONAL'
+                  - 'DEPRECATED'
+                  - 'OBSOLETE'
+                  - 'UNKNOWN'
+                  - 'NOT_YET_DEFINED'
+                example: 'EXPERIMENTAL'
               description: >
                 'Life cycle state of the consumed service
                 find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-010/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
-        "400":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "401":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "403":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "404":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "500":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
+        '400':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '401':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '403':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '404':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '502':
+          $ref: '#/components/responses/502'
+        '531':
+          $ref: '#/components/responses/531'
+        '532':
+          $ref: '#/components/responses/532'
         default:
-          $ref: "#/components/responses/responseForErroredServiceRequests"
+          $ref: '#/components/responses/responseForErroredServiceRequests'          
       callbacks:
         PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList:
           URL: #[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-protocol]://[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/domain-name or /core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/ip-address/ipv-4-address]:[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-port][/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-c-is-mwdi-1-1-2-010/layer-protocol=0/operation-client-interface-1-0:operation-client-interface-pac/operation-client-interface-configuration/operation-name]
             post:
               parameters:
-                - $ref: "#/components/parameters/user"
-                - $ref: "#/components/parameters/originator"
-                - $ref: "#/components/parameters/x-correlator"
-                - $ref: "#/components/parameters/trace-indicator"
-                - $ref: "#/components/parameters/customer-journey"
+                - $ref: '#/components/parameters/user'
+                - $ref: '#/components/parameters/originator'
+                - $ref: '#/components/parameters/x-correlator'
+                - $ref: '#/components/parameters/trace-indicator'
+                - $ref: '#/components/parameters/customer-journey'
               responses:
-                "200":
-                  description: "List of connected devices provided"
+                '200':
+                  description: 'List of connected devices provided'
                   content:
                     application/json:
                       schema:
@@ -520,49 +532,54 @@ paths:
                               description: 'MountName of devices in connected tate at the Controller'
                       example:
                         mount-name-list:
-                          - "305251234"
-                          - "105258888"
+                          - '305251234'
+                          - '105258888'
                   headers:
                     x-correlator:
                       schema:
                         type: string
-                        example: "550e8400-e29b-11d4-a716-446655440000"
-                      description: "UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request"
+                        example: '550e8400-e29b-11d4-a716-446655440000'
+                      description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
                     exec-time:
                       schema:
                         type: integer
                         example: 1100
-                      description: "Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds"
+                      description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
                     backend-time:
                       schema:
                         type: integer
                         example: 850
-                      description: "Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds"
+                      description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
                     life-cycle-state:
                       schema:
                         type: string
                         enum:
-                          - "EXPERIMENTAL"
-                          - "OPERATIONAL"
-                          - "DEPRECATED"
-                          - "OBSOLETE"
-                          - "UNKNOWN"
-                          - "NOT_YET_DEFINED"
-                        example: "EXPERIMENTAL"
-                      description: "Life cycle state of the consumed service"
-                "400":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "401":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "403":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "404":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "500":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                          - 'EXPERIMENTAL'
+                          - 'OPERATIONAL'
+                          - 'DEPRECATED'
+                          - 'OBSOLETE'
+                          - 'UNKNOWN'
+                          - 'NOT_YET_DEFINED'
+                        example: 'EXPERIMENTAL'
+                      description: 'Life cycle state of the consumed service'
+                '400':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '401':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '403':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '404':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '500':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '502':
+                  $ref: '#/components/responses/502'
+                '531':
+                  $ref: '#/components/responses/531'
+                '532':
+                  $ref: '#/components/responses/532'
                 default:
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
   /v1/provide-inventory-of-device:
     post:
       operationId: provideInventoryOfDevice
@@ -585,10 +602,10 @@ paths:
                   description: >
                     'Mount-name of the device, for which the inventory data shall be provided'
               example:
-                mount-name: "305251234"
+                mount-name: '305251234'
       responses:
         '200':
-          description: 'Inventory data of device provided'
+          description: 'Filtered Control Construct provided'
           content:
             application/json:
               schema:
@@ -977,60 +994,44 @@ paths:
               schema:
                 type: string
                 enum:
-                  - "EXPERIMENTAL"
-                  - "OPERATIONAL"
-                  - "DEPRECATED"
-                  - "OBSOLETE"
-                  - "UNKNOWN"
-                  - "NOT_YET_DEFINED"
-                example: "EXPERIMENTAL"
+                  - 'EXPERIMENTAL'
+                  - 'OPERATIONAL'
+                  - 'DEPRECATED'
+                  - 'OBSOLETE'
+                  - 'UNKNOWN'
+                  - 'NOT_YET_DEFINED'
+                example: 'EXPERIMENTAL'
               description: >
                 'Life cycle state of the consumed service
                 find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-011/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
-        "400":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "401":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "403":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "404":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
-        "429":
-          description: "Response in case of errored service requests due to too many parallel requests or too many requests per second."
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - code
-                  - message
-                properties:
-                  code:
-                    type: integer
-                    format: int32
-                    enum:
-                      - 429
-                  message:
-                    type: string
-                    enum:
-                      - "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
-                example:
-                  code: 429
-                  message: "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
-        "500":
-          $ref: "#/components/responses/responseForErroredServiceRequests"
+        '400':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '401':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '403':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '404':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '500':
+          $ref: '#/components/responses/responseForErroredServiceRequests'
+        '502':
+          $ref: '#/components/responses/502'
+        '531':
+          $ref: '#/components/responses/531'
+        '532':
+          $ref: '#/components/responses/532'
         default:
-          $ref: "#/components/responses/responseForErroredServiceRequests"
+          $ref: '#/components/responses/responseForErroredServiceRequests'          
       callbacks:
         RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi:
           URL: #[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-protocol]://[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/domain-name or /core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-address/ip-address/ipv-4-address]:[/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-tcp-c-mwdi-1-1-2-000/layer-protocol=0/tcp-client-interface-1-0:tcp-client-interface-pac/tcp-client-interface-configuration/remote-port][/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-c-is-mwdi-1-1-2-100/layer-protocol=0/operation-client-interface-1-0:operation-client-interface-pac/operation-client-interface-configuration/operation-name]
             post:
               parameters:
-                - $ref: "#/components/parameters/user"
-                - $ref: "#/components/parameters/originator"
-                - $ref: "#/components/parameters/x-correlator"
-                - $ref: "#/components/parameters/trace-indicator"
-                - $ref: "#/components/parameters/customer-journey"
+                - $ref: '#/components/parameters/user'
+                - $ref: '#/components/parameters/originator'
+                - $ref: '#/components/parameters/x-correlator'
+                - $ref: '#/components/parameters/trace-indicator'
+                - $ref: '#/components/parameters/customer-journey'
                 - name: mountname
                   in: path
                   required: true
@@ -1039,8 +1040,8 @@ paths:
                     example: '222250001'
                   description: 'The mount-name of the device that is addressed by this callback'
               responses:
-                "200":
-                  description: "List of connected devices provided"
+                '200':
+                  description: 'List of connected devices provided'
                   content:
                     application/json:
                       schema:
@@ -1054,65 +1055,49 @@ paths:
                     x-correlator:
                       schema:
                         type: string
-                        example: "550e8400-e29b-11d4-a716-446655440000"
-                      description: "UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request"
+                        example: '550e8400-e29b-11d4-a716-446655440000'
+                      description: 'UUID for the service execution flow that allows to correlate requests and responses. Its value must be identical at the response compared with its corresponding request'
                     exec-time:
                       schema:
                         type: integer
                         example: 1100
-                      description: "Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds"
+                      description: 'Value written by the service provider, reporting the total elapsed time for the execution, including all the additional processing needed to retrieve the data from the backend service. Expressed in milliseconds'
                     backend-time:
                       schema:
                         type: integer
                         example: 850
-                      description: "Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds"
+                      description: 'Value written by the service provider, reporting the elapsed time for data retrieval from the backend (service invocation, database access…). Expressed in milliseconds'
                     life-cycle-state:
                       schema:
                         type: string
                         enum:
-                          - "EXPERIMENTAL"
-                          - "OPERATIONAL"
-                          - "DEPRECATED"
-                          - "OBSOLETE"
-                          - "UNKNOWN"
-                          - "NOT_YET_DEFINED"
-                        example: "EXPERIMENTAL"
-                      description: "Life cycle state of the consumed service"
-                "400":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "401":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "403":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "404":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                "429":
-                  description: "Response in case of errored service requests due to too many parallel requests or too many requests per second."
-                  content:
-                    application/json:
-                      schema:
-                        type: object
-                        required:
-                          - code
-                          - message
-                        properties:
-                          code:
-                            type: integer
-                            format: int32
-                            enum:
-                              - 429
-                          message:
-                            type: string
-                            enum:
-                              - "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
-                        example:
-                          code: 429
-                          message: "Too many requests. The maximum amount of requests that can executed in parallel or per second has been reached"
-                "500":
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
-                default:
-                  $ref: "#/components/responses/responseForErroredServiceRequests"
+                          - 'EXPERIMENTAL'
+                          - 'OPERATIONAL'
+                          - 'DEPRECATED'
+                          - 'OBSOLETE'
+                          - 'UNKNOWN'
+                          - 'NOT_YET_DEFINED'
+                        example: 'EXPERIMENTAL'
+                      description: 'Life cycle state of the consumed service'
 
+                '400':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '401':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '403':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '404':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '500':
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
+                '502':
+                  $ref: '#/components/responses/502'
+                '531':
+                  $ref: '#/components/responses/531'
+                '532':
+                  $ref: '#/components/responses/532'
+                default:
+                  $ref: '#/components/responses/responseForErroredServiceRequests'
   ########################################################################################################################
   #   Service Layer - Basic Part
   ########################################################################################################################
@@ -2059,6 +2044,7 @@ paths:
                         - release-number
                         - operation-name
                         - response-code
+                        - timestamp
                       properties:
                         x-correlator:
                           type: string
@@ -10419,6 +10405,215 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/errorDescription'
+    '429':
+      description: 'Response in case too many requests need to be executed in parallel or too many requests have been received within a time period. The maximum number of parallel requests is defined in an IntegerProfile with the service name as a prefix and MaxNumberOfParallelRequests as a suffix. Some time period to elapse for throttling incomming requests is defined in an IntegerProfile with the service name as a prefix and ThrottlingPeriod as a suffix'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 429
+                maximum: 429
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Too many requests'
+    '460':
+      description: 'Response in case the mountName provided in the request is not found in the list of connected devices'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 460
+                maximum: 460
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Not connected. Requested device is currently not in connected state at the controller'
+    '461':
+      description: 'Response in case the (parent) topology object provided in the request (body or path) is not found in the cache.'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 461
+                maximum: 461
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Not available. The topology (parent) object is currently not found in the cache.'
+    '470':
+      description: 'Response in case the resource specified in the request does not exist within the connected device'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 470
+                maximum: 470
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Resource not existing. Device informs about addressed resource unknown'
+    '471':
+      description: 'Response in case the (child) topology object specified in the request (body or path) does not exist within the cache.'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 471
+                maximum: 471
+                format: int32
+              message:
+                type: string
+                enum:
+                  - '(Child) topology object not existing. Cache informs about addressed resource unknown.'
+    '502':
+      description: 'Response in case the server is acting as a gateway or proxy and received an invalid response from the upstream server (device or application providing a consumed service)'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 502
+                maximum: 502
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Bad Gateway'
+    '530':
+      description: 'Response in case the referenced resource exists (e.g. device connected and resource exists in internal datatree), but response data is either not available, lost during transmission, incomplete or corrupted'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 530
+                maximum: 530
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Data invalid. Response data not available, incomplete or corrupted'
+    '531':
+      description: 'Response in case the server is acting as a gateway or proxy and was unable to authenticate at the upstream server (device or application providing a consumed service)'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 531
+                maximum: 531
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Bad Gateway. Authentication at upstream server failed.'
+    '532':
+      description: 'Response in case the server is acting as a gateway or proxy and was unable to connect to the upstream server (device or application providing a consumed service)'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 532
+                maximum: 532
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Bad Gateway. Upstream server not responding.'
+    '533':
+      description: 'Response in case the referenced resource for an connected device does not exist at the controller.'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 533
+                maximum: 533
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Resource unknown. The resource for the connected device does not exist at the Controller'
+    '550':
+      description: 'Response in case that the application wants to call a service specified by the requestor (e.g., to return data after a long taking  data retrieval) during a service call to the application and the service information cannot be found.'
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+                minimum: 550
+                maximum: 550
+                format: int32
+              message:
+                type: string
+                enum:
+                  - 'Requestor information for callback execution not found.'
   schemas:
     errorDescription:
       type: object
@@ -10839,7 +11034,7 @@ components:
         top-level-equipment:
           type: array
           items:
-            type: object
+            type: string
             additionalProperties: true
         firmware-1-0:firmware-collection:
           type: object

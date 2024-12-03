@@ -13,8 +13,8 @@ module.exports.individualServicesOperationsMapping =
         "sequence": "010"
       }
     },
-    "/v1/provide-inventory-data-of-device": {
-      "/v1/provide-inventory-data-of-device": {
+    "/v1/provide-inventory-of-device": {
+      "/v1/provide-inventory-of-device": {
         "api-segment": "is",
         "sequence": "011"
       }

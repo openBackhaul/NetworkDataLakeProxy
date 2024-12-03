@@ -215,7 +215,7 @@ module.exports.provideListOfConnectedDevices = async function provideListOfConne
 };
 
 
- // Handler for /v1/provide-inventory-data-of-device
+ // Handler for /v1/provide-inventory-of-device
 module.exports.provideInventoryOfDevice = async function provideInventoryOfDevice (req, res, next, body) {
   let startTime = process.hrtime();
 

@@ -118,7 +118,7 @@ async function getValidationFilter() {
   if (!cachedValidationFilter) {
     try {
       const schemaPath = 'api/openapi.yaml'; // OpenAPI Spec path
-      const responseSchema = 'inline_response_200_1'; // response schema of /v1/provide-inventory-data-of-device
+      const responseSchema = 'inline_response_200_1'; // response schema of /v1/provide-inventory-of-device
 
       const openAPISchema = await loadOpenAPISchema(schemaPath);
       const schema = openAPISchema.components.schemas[responseSchema];

@@ -658,7 +658,7 @@ paths:
 
 
 
-          $ref: '#/components/responses/responseForErroredOamRequests'
+         
 
 ########################################################################################################################
 #   Common Components

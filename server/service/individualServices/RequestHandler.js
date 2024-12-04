@@ -1,18 +1,8 @@
 const restClient = require('./RestClient');
 const requestUtil = require("./RequestUtil");
 const controlConstructUtils = require("./ControlConstructUtil");
+const {HTTP_CODES} = require("./RestClient");
 const logger = require('../LoggingService.js').getLogger();
-
-
-const HTTP_CODES = {
-    UNAUTHORIZED: 401,
-    FORBIDDEN: 403,
-    REQUEST_TIMEOUT: 408,
-    INTERNAL_SERVER_ERROR: 500,
-    BAD_GATEWAY: 502,
-    BAD_GATEWAY_AUTHENTICATION: 531,
-    BAD_GATEWAY_NOT_RESPONDING: 532
-};
 
 
 /**
@@ -33,49 +23,13 @@ function buildTargetUrl(protocol, address, port, operationUrl, fieldsFilter = un
         // Manually encode parentheses
         url = url.replaceAll("(", "%28").replaceAll(")", "%29");
     }
+
     return url;
 }
 
 
 /**
- * Translate errors received when calling the upstream server.
- * @param ret
- * @returns {Object} An object containing:
- *  - {integer} code: The standardized status code.
- *  - {string} message: A human-readable message.
- */
-function translateProxyResponse(ret) {
-    const code = Number(ret.code);
-
-    if (isNaN(code)) {
-        return { code: HTTP_CODES.INTERNAL_SERVER_ERROR, message: "Invalid response code received from upstream." };
-    }
-
-    switch(code) {
-        case HTTP_CODES.INTERNAL_SERVER_ERROR: // Internal Server Error
-            // Response in case the server is acting as a gateway or proxy and
-            // received an invalid response from the upstream server (device or application providing a consumed service)
-            return { code: HTTP_CODES.BAD_GATEWAY, message: "Bad Gateway" };
-
-        case HTTP_CODES.UNAUTHORIZED:
-        case HTTP_CODES.FORBIDDEN:
-            // Response in case the server is acting as a gateway or proxy and
-            // was unable to authenticate at the upstream server (device or application providing a consumed service)
-            return { code: HTTP_CODES.BAD_GATEWAY_AUTHENTICATION, message: "Bad Gateway. Authentication at upstream server failed." };
-
-        case HTTP_CODES.REQUEST_TIMEOUT: // Request Timeout
-            // Response in case the server is acting as a gateway or proxy and
-            // was unable to connect to the upstream server (device or application providing a consumed service)
-            return { code: HTTP_CODES.BAD_GATEWAY_NOT_RESPONDING, message: "Bad Gateway. Upstream server not responding." };
-
-        default:
-            return ret;
-    }
-}
-
-
-/**
- * forward request to MWDI instance depending on use case
+ * Forward request to MWDI instance depending on use case.
  *
  * @param requestUrl
  * @param callbackName
@@ -99,12 +53,8 @@ exports.postRequestDataFromMWDI = async function(requestUrl, callbackName, paylo
 
     const ret = await restClient.startPostDataRequest(targetUrl, payload, requestUrl, opData.operationKey);
 
-    // Translate error codes
-    const retTranslated = translateProxyResponse({code: ret.code, message: ret.message});
-
     return {
-        ...retTranslated,
-        headers: ret.headers,
+        ...ret,
         operationName: opData.operationName
     };
 }
@@ -146,12 +96,8 @@ exports.getDataFromMWDI = async function (requestUrl, callbackName, payload, fie
 
     const ret = await restClient.startGetRequest(targetUrl, requestUrl, opData.operationKey);
 
-    // Translate error codes
-    const retTranslated = translateProxyResponse({code: ret.code, message: ret.message});
-
     return {
-        ...retTranslated,
-        headers: ret.headers,
+        ...ret,
         operationName: opData.operationName
     };
 }

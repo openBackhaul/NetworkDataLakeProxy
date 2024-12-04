@@ -4421,6 +4421,7 @@ paths:
                       - trace-indicator
                       - user
                       - x-correlator
+                      - timestamp
                       type: object
                       properties:
                         x-correlator:

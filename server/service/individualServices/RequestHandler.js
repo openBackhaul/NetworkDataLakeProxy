@@ -1,11 +1,35 @@
 const restClient = require('./RestClient');
 const requestUtil = require("./RequestUtil");
 const controlConstructUtils = require("./ControlConstructUtil");
+const {HTTP_CODES} = require("./RestClient");
 const logger = require('../LoggingService.js').getLogger();
 
 
 /**
- * forward request to MWDI instance depending on use case
+ * Build target URL, optionally including a fields filter parameter.
+ * @param protocol
+ * @param address
+ * @param port
+ * @param operationUrl
+ * @param fieldsFilter
+ * @returns {string}
+ */
+function buildTargetUrl(protocol, address, port, operationUrl, fieldsFilter = undefined) {
+    let url = requestUtil.buildRequestTargetPath(protocol, address, port) + operationUrl;
+
+    if (fieldsFilter) {
+        url += "?fields=" + encodeURIComponent(fieldsFilter);
+
+        // Manually encode parentheses
+        url = url.replaceAll("(", "%28").replaceAll(")", "%29");
+    }
+
+    return url;
+}
+
+
+/**
+ * Forward request to MWDI instance depending on use case.
  *
  * @param requestUrl
  * @param callbackName
@@ -14,24 +38,23 @@ const logger = require('../LoggingService.js').getLogger();
  */
 exports.postRequestDataFromMWDI = async function(requestUrl, callbackName, payload) {
     let opData = await controlConstructUtils.getForwardingConstructOutputOperationData(callbackName);
+
     if (!opData) {
-        const msg = "Operation data could not queried: " + callbackName;
+        const msg = `Operation data could not be queried for callback: ${callbackName}`;
         logger.error(msg);
-        return {code: 500, message: msg};
+        return { code: HTTP_CODES.INTERNAL_SERVER_ERROR, message: msg };
     }
 
     let operationUrl = opData.operationName;
 
-    let targetUrl = requestUtil.buildRequestTargetPath(opData.protocol, opData.address, opData.port) + operationUrl;
+    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, opData.operationName);
 
-    logger.debug("forwarding post data request to '" + targetUrl + "'");
+    logger.debug(`Forwarding post data request to '${targetUrl}'`);
 
     const ret = await restClient.startPostDataRequest(targetUrl, payload, requestUrl, opData.operationKey);
 
     return {
-        code: ret.code,
-        message: ret.message,
-        headers: ret.headers,
+        ...ret,
         operationName: opData.operationName
     };
 }
@@ -47,29 +70,34 @@ exports.postRequestDataFromMWDI = async function(requestUrl, callbackName, paylo
  */
 exports.getDataFromMWDI = async function (requestUrl, callbackName, payload, fieldsFilter=undefined) {
     let opData = await controlConstructUtils.getForwardingConstructOutputOperationData(callbackName);
+    if (!opData) {
+        const msg = `Operation data could not be queried for callback: ${callbackName}`;
+        logger.error(msg);
+        return { code: HTTP_CODES.INTERNAL_SERVER_ERROR, message: msg };
+    }
 
     let operationUrl = opData.operationName;
 
     if (operationUrl.includes("{mountName}")) {
-        operationUrl = operationUrl.replace("{mountName}", payload["mount-name"]);
+        const mountName = payload["mount-name"];
+
+        if (!mountName) {
+            const msg = "Missing required 'mount-name' in payload.";
+            logger.error(msg);
+            return { code: HTTP_CODES.INTERNAL_SERVER_ERROR, message: msg };
+        }
+
+        operationUrl = operationUrl.replace("{mountName}", mountName);
     }
 
-    let targetUrl = requestUtil.buildRequestTargetPath(opData.protocol, opData.address, opData.port) + operationUrl;
+    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, opData.operationName, fieldsFilter);
 
-    if (fieldsFilter) {
-        targetUrl += "?fields=" + encodeURIComponent(fieldsFilter);
-        // () must be manually encoded
-        targetUrl = targetUrl.replaceAll("(", "%28").replaceAll(")", "%29");
-    }
-
-    logger.debug("forwarding get request to '" + targetUrl + "'");
+    logger.debug(`Forwarding get request to '${targetUrl}'`);
 
     const ret = await restClient.startGetRequest(targetUrl, requestUrl, opData.operationKey);
 
     return {
-        code: ret.code,
-        message: ret.message,
-        headers: ret.headers,
+        ...ret,
         operationName: opData.operationName
     };
 }

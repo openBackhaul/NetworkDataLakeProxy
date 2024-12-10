@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "68fb9397-083e-407f-a971-9c4220df9da9",
-		"name": "NetworkDataLakeProxyBasicTest_1.0.0",
+		"name": "NetworkDataLakeProxyBasicTest_1.0.1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9698906",
 		"_collection_link": "https://kat123456.postman.co/workspace/MWDI-Testing-convenience-servic~b5e959b8-22a6-483d-9eba-1cdd51e28c66/collection/9698906-68fb9397-083e-407f-a971-9c4220df9da9?action=share&source=collection_link&creator=9698906"
@@ -19,7 +19,7 @@
 								"exec": [
 									"console.clear();\r",
 									"logger.struc(\"\\n\\n\\n===========================================================================================\");\r",
-									"logger.struc(\"====================================== NetworkDataLakeProxy 1.0.0 ====================================\");\r",
+									"logger.struc(\"====================================== NetworkDataLakeProxy 1.0.1 ====================================\");\r",
 									"logger.struc(\"==========================================================================================\");\r",
 									"\r",
 									"// ------------------------------- PURPOSE -------------------------------------------------------------------------------- //\r",

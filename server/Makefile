@@ -29,8 +29,8 @@ run: rm
 
 test: run
 	npm run test
-	newman run -d ../testing/$(DATAFILE) ../testing/NetworkDataLakeProxyBasicTest_1.0.0.postman_collection.json --env-var baseUrl=http://$(DOCKER_HOST):$(PORT)
+	newman run -d ../testing/$(DATAFILE) ../testing/NetworkDataLakeProxyBasicTest_1.0.1.postman_collection.json --env-var baseUrl=http://$(DOCKER_HOST):$(PORT)
 
 test-local: run
 	npm run test
-	newman run -d ../testing/$(DATAFILE) ../testing/NetworkDataLakeProxyBasicTest_1.0.0.postman_collection.json --env-var baseUrl=http://localhost:$(PORT)
+	newman run -d ../testing/$(DATAFILE) ../testing/NetworkDataLakeProxyBasicTest_1.0.1.postman_collection.json --env-var baseUrl=http://localhost:$(PORT)

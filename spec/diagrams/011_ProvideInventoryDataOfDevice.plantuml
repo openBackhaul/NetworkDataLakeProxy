@@ -5,7 +5,7 @@ title RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi
 
 participant "external \n(NetworkDataLake)" as external
 participant "NDLP://v1/provide-inventory-data-of-device" as ndlp
-participant "MWDI://core-model-1-4:network-control-domain=cache/control-construct={mountName}?fields=<ndlp-1.0.1-string-p-000>" as mwdi
+participant "MWDI://core-model-1-4:network-control-domain=cache/control-construct={mountName}?fields=<ndlp-1-0-0-string-p-000>" as mwdi
 
 external -> ndlp: {mountName}(BasicAuth)
 activate ndlp

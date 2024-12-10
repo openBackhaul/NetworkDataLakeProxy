@@ -15,8 +15,10 @@
         properties:
           profile-collection:
             type: object
+            additionalProperties: true
           equipment-augment-1-0:control-construct-pac:
             type: object
+            additionalProperties: true
           equipment:
             type: array
             items:
@@ -51,6 +53,7 @@
             type: array
             items:
               type: object
+              additionalProperties: true
           logical-termination-point:
             type: array
             items:
@@ -76,7 +79,7 @@
                             properties:
                               air-interface-configuration:
                                 type: object
-                      - description: 'ethernet-container'
+                                additionalProperties: true
                         type: object
                         properties:
                           local-id:
@@ -90,6 +93,7 @@
                             properties:
                               ethernet-container-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'hybrid-mw-structure'
                         type: object
                         properties:
@@ -104,6 +108,7 @@
                               properties:
                                 hybrid-mw-structure-configuration:
                                   type: object
+                                  additionalProperties: true
                       - description: 'mac-interface'
                         type: object
                         properties:
@@ -118,6 +123,7 @@
                             properties:
                               mac-interface-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'pure-ethernet-structure'
                         type: object
                         properties:
@@ -132,6 +138,7 @@
                             properties:
                               pure-ethernet-structure-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'vlan-interface'
                         type: object
                         properties:
@@ -146,6 +153,7 @@
                             properties:
                               vlan-interface-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'wire-interface'
                         type: object
                         properties:
@@ -160,6 +168,7 @@
                             properties:
                               wire-interface-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'ip-interface'
                         type: object
                         properties:
@@ -174,6 +183,7 @@
                             properties:
                               ip-interface-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'tdm-container'
                         type: object
                         properties:
@@ -188,6 +198,7 @@
                             properties:
                               tdm-container-configuration:
                                 type: object
+                                additionalProperties: true
                       - description: 'default, if none of above matching'
                         type: object
                         properties:
@@ -212,3 +223,4 @@
               type: string
           firmware-1-0:firmware-collection:
             type: object
+            additionalProperties: true

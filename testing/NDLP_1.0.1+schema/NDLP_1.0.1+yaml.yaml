@@ -80,6 +80,7 @@
                               air-interface-configuration:
                                 type: object
                                 additionalProperties: true
+                      - description: 'ethernet-container'                                
                         type: object
                         properties:
                           local-id:

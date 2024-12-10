@@ -118,7 +118,6 @@
                             properties:
                               mac-interface-configuration:
                                 type: object
-                                additionalProperties: true
                       - description: 'pure-ethernet-structure'
                         type: object
                         properties:

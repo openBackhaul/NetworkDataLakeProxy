@@ -29,9 +29,6 @@ paths:
                     type: array
                     items:
                       type: string
-                      description: >
-                        'MountName of devices in connected state at the Controller
-                        from {$PromptForProvidingListOfConnectedDeviceCausesReadingMwdiDeviceList.response.body#mount-name-list}'
               example:
                 mount-name-list:
                   - '305251234'
@@ -48,9 +45,6 @@ paths:
                   - "UNKNOWN"
                   - "NOT_YET_DEFINED"
                 example: "EXPERIMENTAL"
-              description: >
-                'Life cycle state of the consumed service
-                find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-010/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
         "400":
           $ref: "#/components/responses/responseForErroredServiceRequests"
         "401":
@@ -84,8 +78,6 @@ paths:
               properties:
                 mount-name:
                   type: string
-                  description: >
-                    'Mount-name of the device, for which the inventory data shall be provided'
               example:
                 mount-name: "305251234"
       responses:
@@ -100,9 +92,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/FILTERED_CONTROL_CONSTRUCT'
-                    description: >
-                      'Filtered control construct
-                      from {RequestForProvidingInventoryDataOfDeviceCausesFilteredRequestToMwdi.response.body#FILTERED_CONTROL_CONSTRUCT}'
               example:
                 core-model-1-4:control-construct:
                   - profile-collection:
@@ -486,9 +475,6 @@ paths:
                   - "UNKNOWN"
                   - "NOT_YET_DEFINED"
                 example: "EXPERIMENTAL"
-              description: >
-                'Life cycle state of the consumed service
-                find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-011/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
         "400":
           $ref: "#/components/responses/responseForErroredServiceRequests"
         "401":
@@ -498,7 +484,6 @@ paths:
         "404":
           $ref: "#/components/responses/responseForErroredServiceRequests"
         "429":
-          description: "Response in case of errored service requests due to too many parallel requests or too many requests per second."
           content:
             application/json:
               schema:

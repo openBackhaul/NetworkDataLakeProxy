@@ -18,7 +18,7 @@
                             {
                                 "uuid": "resp1234-5678-7654-cdef-723456789abc",
                                 "statusCode": 200,
-                                "label": "provide-inventory-data-of-device",
+                                "label": "provide-inventory-of-device",
                                 "headers": [
                                     {
                                         "key": "Content-Type",

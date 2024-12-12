@@ -227,24 +227,35 @@ async function getFirstHttpLTPByApplicationName(applicationName) {
 }
 
 async function getProfileStringValueByName(searchedStringValueName) {
-    let stringValue;
     try {
-        let stringProfileInstanceList = await profileCollection.getProfileListForProfileNameAsync(profile.profileNameEnum.STRING_PROFILE);
+        const stringProfileInstanceList = await profileCollection.getProfileListForProfileNameAsync(
+            profile.profileNameEnum.STRING_PROFILE
+        );
+
+        if (!stringProfileInstanceList || stringProfileInstanceList.length === 0) {
+            logger.warn(`No profiles found for profile name: ${profile.profileNameEnum.STRING_PROFILE}`);
+            return null;
+        }
 
         for (const stringProfileInstance of stringProfileInstanceList) {
-            let stringProfilePac = stringProfileInstance[onfAttributes.STRING_PROFILE.PAC];
-            let stringProfileCapability = stringProfilePac[onfAttributes.STRING_PROFILE.CAPABILITY];
-            let stringName = stringProfileCapability[onfAttributes.STRING_PROFILE.STRING_NAME];
+            const stringProfilePac = stringProfileInstance?.[onfAttributes.STRING_PROFILE.PAC];
+            const stringProfileCapability = stringProfilePac?.[onfAttributes.STRING_PROFILE.CAPABILITY];
+            const stringName = stringProfileCapability?.[onfAttributes.STRING_PROFILE.STRING_NAME];
+
             if (stringName === searchedStringValueName) {
                 let stringProfileConfiguration = stringProfilePac[onfAttributes.STRING_PROFILE.CONFIGURATION];
-                stringValue = stringProfileConfiguration[onfAttributes.STRING_PROFILE.STRING_VALUE];
-                break;
+                return stringProfileConfiguration?.[onfAttributes.STRING_PROFILE.STRING_VALUE];
             }
         }
-    } catch (error) {
-        logger.error(error, "error during search for string profile in config with name '" + searchedStringValueName + "'");
+
+        // Log info if the searched string is not found
+        logger.info(`String value '${searchedStringValueName}' not found in any profile.`);
+    } catch(error) {
+        logger.error(error, `error during search for string profile in config with name '${searchedStringValueName}'`);
     }
-    return stringValue;
+
+    // Return null if no match is found or an error occurs
+    return null;
 }
 
 

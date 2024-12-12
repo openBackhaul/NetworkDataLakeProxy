@@ -8,6 +8,9 @@ const restResponseBuilder = require('onf-core-model-ap/applicationPattern/rest/s
 const executionAndTraceService = require('onf-core-model-ap/applicationPattern/services/ExecutionAndTraceService');
 const logger = require('../service/LoggingService.js').getLogger();
 
+const NEW_RELEASE_FORWARDING_NAME = undefined;
+const OLD_RELEASE_FORWARDING_NAME = 'PromptForEmbeddingCausesRequestForBequeathingData';
+
 // Aufruf von recordServiceRequest mit Protokollierung der Laufzeit
 async function recordSvcRequest(startTime, xCorrelator, traceIndicator, user, originator, req, responseCode, responseBodyToDocument) {
   let execTime = await restResponseHeader.executionTimeInMilliseconds(startTime);
@@ -24,7 +27,7 @@ module.exports.disposeRemaindersOfDeregisteredApplication = async function dispo
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -41,7 +44,7 @@ module.exports.embedYourself = async function embedYourself(req, res, next, body
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -58,7 +61,7 @@ module.exports.endSubscription = async function endSubscription(req, res, next, 
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -75,7 +78,7 @@ module.exports.informAboutApplication = async function informAboutApplication(re
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -92,7 +95,7 @@ module.exports.informAboutApplicationInGenericRepresentation = async function in
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -105,11 +108,11 @@ module.exports.informAboutPrecedingRelease = async function informAboutPreceding
   let responseCode = responseCodeEnum.code.OK;
   let responseBodyToDocument = {};
   try {
-    responseBodyToDocument = await basicServices.informAboutPrecedingRelease(user, originator, xCorrelator, traceIndicator, customerJourney);
+    responseBodyToDocument = await basicServices.informAboutPrecedingRelease(OLD_RELEASE_FORWARDING_NAME);
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -126,7 +129,7 @@ module.exports.informAboutReleaseHistory = async function informAboutReleaseHist
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -143,7 +146,7 @@ module.exports.informAboutReleaseHistoryInGenericRepresentation = async function
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -160,7 +163,7 @@ module.exports.inquireBasicAuthRequestApprovals = async function inquireBasicAut
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -177,7 +180,7 @@ module.exports.inquireOamRequestApprovals = async function inquireOamRequestAppr
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -194,7 +197,7 @@ module.exports.listLtpsAndFcs = async function listLtpsAndFcs(req, res, next, us
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -211,7 +214,7 @@ module.exports.redirectOamRequestInformation = async function redirectOamRequest
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -228,7 +231,7 @@ module.exports.redirectServiceRequestInformation = async function redirectServic
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -245,7 +248,7 @@ module.exports.redirectTopologyChangeInformation = async function redirectTopolo
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -270,7 +273,7 @@ module.exports.registerYourself = async function registerYourself(req, res, next
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -287,7 +290,7 @@ module.exports.startApplicationInGenericRepresentation = async function startApp
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -304,7 +307,7 @@ module.exports.updateClient = async function updateClient(req, res, next, body, 
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -312,7 +315,7 @@ module.exports.updateClient = async function updateClient(req, res, next, body, 
   await recordSvcRequest(startTime, xCorrelator, traceIndicator, user, originator, req, responseCode, responseBodyToDocument);
 };
 
-module.exports.updateClientOfSubsequentRelease = async function updateClientOfSubsequentRelease (req, res, next, body, user, originator, xCorrelator, traceIndicator, customerJourney) {
+module.exports.UpdateClientOfSubsequentRelease = async function UpdateClientOfSubsequentRelease (req, res, next, body, user, originator, xCorrelator, traceIndicator, customerJourney) {
   let startTime = process.hrtime();
   let responseCode = responseCodeEnum.code.OK;
   let responseBodyToDocument = {};
@@ -321,7 +324,7 @@ module.exports.updateClientOfSubsequentRelease = async function updateClientOfSu
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -338,7 +341,7 @@ module.exports.updateOperationClient = async function updateOperationClient(req,
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;
@@ -355,7 +358,7 @@ module.exports.updateOperationKey = async function updateOperationKey(req, res, 
     let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
     restResponseBuilder.buildResponse(res, responseCode, responseBodyToDocument, responseHeader);
   } catch (responseBody) {
-    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url);
+    let responseHeader = await restResponseHeader.createResponseHeader(xCorrelator, startTime, req.url, -1);
     let sentResp = restResponseBuilder.buildResponse(res, undefined, responseBody, responseHeader);
     responseCode = sentResp.code;
     responseBodyToDocument = sentResp.body;

@@ -21,7 +21,7 @@ function wait(ms) {
 
 
 describe('provideInventoryOfDevice', () => {
-    const mockRequestUrl = 'http://localhost:4019/v1/provide-inventory-data-of-device';
+    const mockRequestUrl = 'http://localhost:4019/v1/provide-inventory-of-device';
 
     it('should call getDataFromMWDI with correct arguments and return the result', async () => {
         const mockResult = {
@@ -74,7 +74,7 @@ describe('provideInventoryOfDevice', () => {
 
 
 describe('provideInventoryOfDevice throttling', () => {
-  const mockRequestUrl = 'http://localhost:4019/v1/provide-inventory-data-of-device';
+  const mockRequestUrl = 'http://localhost:4019/v1/provide-inventory-of-device';
 
   it('should call getDataFromMWDI with correct arguments and return the result', async () => {
     const mockResult = {

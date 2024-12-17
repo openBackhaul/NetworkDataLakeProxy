@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
-  title: NDLP_1.0.1+simulator.1
+  title: NDLP_1.0.1+simulator.completeness
   version: 1.0.0
 
 paths:
 ########################################################################################################################
-#   Generic Simulator (generic examples, but all response codes)
+#    NDLP_1.0.1+simulator.completeness in static reference mode
 ########################################################################################################################
   /v1/provide-list-of-connected-devices:
     post:
@@ -31,8 +31,8 @@ paths:
                       type: string
               example:
                 mount-name-list:
-                  - 'string'
-                  - 'string'
+                  - '305251234'
+                  - '105258888'
           headers:
             life-cycle-state:
               schema:
@@ -78,6 +78,8 @@ paths:
               properties:
                 mount-name:
                   type: string
+              example:
+                mount-name: "305251234"
       responses:
         '200':
           description: 'Inventory data of device provided'
@@ -473,6 +475,9 @@ paths:
                   - "UNKNOWN"
                   - "NOT_YET_DEFINED"
                 example: "EXPERIMENTAL"
+              description: >
+                'Life cycle state of the consumed service
+                find in [/core-model-1-4:control-construct/logical-termination-point=ndlp-1-0-0-op-s-is-011/layer-protocol=0/operation-server-interface-1-0:operation-server-interface-pac/operation-server-interface-configuration/life-cycle-state]'
         "400":
           $ref: "#/components/responses/responseForErroredServiceRequests"
         "401":
@@ -482,7 +487,7 @@ paths:
         "404":
           $ref: "#/components/responses/responseForErroredServiceRequests"
         "429":
-          description: 'Response in case of errored service requests due to too many parallel requests or too many requests per second.'
+          description: "Response in case of errored service requests due to too many parallel requests or too many requests per second."
           content:
             application/json:
               schema:

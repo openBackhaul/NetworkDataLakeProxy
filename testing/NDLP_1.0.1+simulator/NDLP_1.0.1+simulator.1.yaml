@@ -93,67 +93,18 @@ paths:
               example:
                 core-model-1-4:control-construct:
                   - profile-collection:
-                      profile:
-                        - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
-                          profile-name: 'scheduler-profile-1-0:PROFILE_NAME_TYPE_SCHEDULER_PROFILE'
-                          scheduler-profile-1-0:scheduler-profile-pac:
-                            scheduler-profile-capability:
-                              scheduler-kind-configuration-is-avail: true
-                              available-queue-list:
-                                - available-scheduling-kind-list:
-                                    - 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_STRICT'
-                                    - 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_DWRR'
-                                  queue-name: 'scheduler-profile-1-0:QUEUE_NAME_TYPE_EXPEDITED_FORWARDING_QUEUE'
-                            scheduler-profile-configuration:
-                              queue-behavior-list:
-                                - scheduler-kind: 'scheduler-profile-1-0:SCHEDULER_KIND_TYPE_STRICT'
-                                  weighting: -1
-                                  queue-name: 'scheduler-profile-1-0:QUEUE_NAME_TYPE_CLASS_SELECTOR_QUEUE7'
-                          administrative-control: 'core-model-1-4:ADMINISTRATIVE_CONTROL_QUIESCENT'
-                          lifecycle-state: 'core-model-1-4:LIFECYCLE_STATE_INSTALLED'
-                          administrative-state: 'core-model-1-4:ADMINISTRATIVE_STATE_UNLOCKED'
-                          name:
-                            - value-name: 'profileName'
-                              value: '3WFQStrictPriorityBestEffortMixed'
-                          uuid: 'SCHED-4'
+                      type: object
                     equipment-augment-1-0:control-construct-pac:
-                      last-config-change-timestamp: '2010-11-20T14:00:00+01:00'
-                      external-label: '513559998B'
+                      type: object
                     equipment:
-                      - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
+                      - operational-state: 'string'
                         actual-equipment:
-                          operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
-                          manufactured-thing:
-                            equipment-instance:
-                              manufacture-date: '2013-08-09'
-                              serial-number: '133204102928'
-                            equipment-type:
-                              part-type-identifier: RDH90120/D0210
-                              version: 'R4A'
-                            manufacturer-properties:
-                              manufacturer-name: 'DELTA'
-                          physical-properties:
-                            temperature: '32'
-                          structure:
-                            category: 'core-model-1-4:EQUIPMENT_CATEGORY_SMALL_FORMFACTOR_PLUGGABLE'
+                          type: object
                         connector:
-                          - equipment-augment-1-0:connector-pac:
-                              connector-kind: 'equipment-augment-1-0:CONNECTOR_KIND_TYPE_NOT_YET_DEFINED'
-                              sequence-id: 3
-                              outside-label: 'Label of the position not yet defined.'
-                            local-id: '1963217440'
+                          - local-id: 'string'
                         expected-equipment:
-                          - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
-                            manufactured-thing:
-                              equipment-type:
-                                part-type-identifier: 'RDH90120/D0210'
-                                version: 'R4A'
-                              manufacturer-properties:
-                                manufacturer-name: 'DELTA'
-                            local-id: '1954829311'
-                            structure:
-                              category: 'core-model-1-4:EQUIPMENT_CATEGORY_SMALL_FORMFACTOR_PLUGGABLE'
-                        uuid: '1921274879'
+                          - local-id: '1954829311'
+                        uuid: 'string'
                       - operational-state: 'core-model-1-4:OPERATIONAL_STATE_ENABLED'
                         contained-holder:
                           - local-id: '1921266687'

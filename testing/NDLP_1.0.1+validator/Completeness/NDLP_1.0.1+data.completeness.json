@@ -7,8 +7,8 @@
 				"dummyUri": "ping.openBackhaul.com"
 			},
 			{
-				"serverName": "matr",
-				"server": "http://127.0.0.1:4005",
+				"serverName": "ndlp",
+				"server": "http://127.0.0.1:4019",
 				"pathToControlConstruct": "",
 				"authorizationCode": "Basic ????",
 				"operationKey": "Operation key not yet provided.",
@@ -19,8 +19,8 @@
 				"customerJourney": ""
 			},
 			{
-				"serverName": "matrSimulator",
-				"server": "http://localhost:3002",
+				"serverName": "ndlpSimulator",
+				"server": "http://localhost:3042",
 				"pathToControlConstruct": "",
 				"authorizationCode": "Basic ????",
 				"operationKey": "Operation key not yet provided.",
@@ -33,15 +33,15 @@
 		],
 		"collectionInputList": [
 			{
-				"collectionName": "MatrCompleteness_server",
-				"serverToBeApplied": "matr",
+				"collectionName": "NdlpCompleteness_server",
+				"serverToBeApplied": "ndlp",
 				"mountName": "513250011",
 				"kindOfReference": "dynamic"
 			},
 			{
-				"collectionName": "MatrCompleteness_simulator",
-				"serverToBeApplied": "matrSimulator",
-				"mountName": "513250010",
+				"collectionName": "NdlpCompleteness_simulator",
+				"serverToBeApplied": "ndlpSimulator",
+				"mountName": "513250011",
 				"kindOfReference": "static",
 				"suffixUrlEncodingIsRequired": true
 			}

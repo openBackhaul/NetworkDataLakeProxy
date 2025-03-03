@@ -217,7 +217,7 @@
               "integer-profile-1-0:integer-profile-pac": {
                 "integer-profile-capability": {
                   "integer-name": "maxNumberOfParallelCcRequests",
-                  "purpose": "Maximum number of allowed parallel Contol construct requests",
+                  "purpose": "Maximum number of allowed parallel Control construct requests",
                   "minimum": 0,
                   "maximum": 1
                 },

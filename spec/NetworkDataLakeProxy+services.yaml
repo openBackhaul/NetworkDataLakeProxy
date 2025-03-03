@@ -73,7 +73,7 @@ clients:
   - http-client:
       application-name: OldRelease
       release-number: 1.0.0
-      uuid: ndlp-1-0-0-http-c-or-1-0-0-000
+      uuid: ndlp-1-0-1-http-c-or-1-0-0-000
     tcp-client:
       remote-protocol: http
       ip-address: 127.0.0.1
@@ -92,12 +92,12 @@ clients:
   - http-client:
       application-name: NewRelease
       release-number: 1.0.1
-      uuid: ndlp-1-0-1-http-c-nr-1-0-0-000
+      uuid: ndlp-1-0-1-http-c-nr-1-0-1-000
     tcp-client:
       remote-protocol: http
       ip-address: 127.0.0.1
       tcp-port: 4019
-      uuid: ndlp-1-0-1-tcp-c-nr-1-0-0-000
+      uuid: ndlp-1-0-1-tcp-c-nr-1-0-1-000
     operation-clients:
       own-oam:
         basic:

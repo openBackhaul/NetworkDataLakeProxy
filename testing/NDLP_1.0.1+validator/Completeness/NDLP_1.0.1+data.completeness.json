@@ -1,0 +1,50 @@
+[
+	{
+		"mode": "debug",
+		"serverList": [
+			{
+				"serverName": "dummy",
+				"dummyUri": "ping.openBackhaul.com"
+			},
+			{
+				"serverName": "ndlp",
+				"server": "http://127.0.0.1:4019",
+				"pathToControlConstruct": "",
+				"authorizationCode": "Basic ????",
+				"operationKey": "Operation key not yet provided.",
+				"userName": "Thorsten Heinze",
+				"originator": "MATR_1.0.1+testcase.completeness",
+				"xCorrelator": "00000000-0000-0000-0000-000000000000",
+				"traceIndicator": "1",
+				"customerJourney": ""
+			},
+			{
+				"serverName": "ndlpSimulator",
+				"server": "http://localhost:3042",
+				"pathToControlConstruct": "",
+				"authorizationCode": "Basic ????",
+				"operationKey": "Operation key not yet provided.",
+				"userName": "Thorsten Heinze",
+				"originator": "MATR_1.0.1+testcase.completeness",
+				"xCorrelator": "00000000-0000-0000-0000-000000000000",
+				"traceIndicator": "1",
+				"customerJourney": ""
+			}
+		],
+		"collectionInputList": [
+			{
+				"collectionName": "NdlpCompleteness_server",
+				"serverToBeApplied": "ndlp",
+				"mountName": "513250011",
+				"kindOfReference": "dynamic"
+			},
+			{
+				"collectionName": "NdlpCompleteness_simulator",
+				"serverToBeApplied": "ndlpSimulator",
+				"mountName": "513250011",
+				"kindOfReference": "static",
+				"suffixUrlEncodingIsRequired": true
+			}
+		]
+	}
+]

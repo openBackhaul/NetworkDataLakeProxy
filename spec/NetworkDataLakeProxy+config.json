@@ -887,7 +887,7 @@
                         "local-id": "1",
                         "release-number": "1.0.1",
                         "release-date": "20.12.2024",
-                        "changes": "Initial version"
+                        "changes": "bug fixes"
                       }                      
                     ]
                   }
@@ -961,7 +961,7 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "OldRelease",
-                    "release-number": " >>> ReleaseNumber of the existing release <<< "
+                    "release-number": "1.0.0"
                   }
                 }
               }
@@ -994,12 +994,12 @@
             ]
           },
           {
-            "uuid": "ndlp-1-0-1-http-c-nr-1-0-0-000",
+            "uuid": "ndlp-1-0-1-http-c-nr-1-0-1-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
             ],
             "server-ltp": [
-              "ndlp-1-0-1-tcp-c-nr-1-0-0-000"
+              "ndlp-1-0-1-tcp-c-nr-1-0-1-000"
             ],
             "layer-protocol": [
               {
@@ -1008,17 +1008,17 @@
                 "http-client-interface-1-0:http-client-interface-pac": {
                   "http-client-interface-configuration": {
                     "application-name": "NewRelease",
-                    "release-number": " >>> ReleaseNumber of the new release <<< "
+                    "release-number": "1.0.1"
                   }
                 }
               }
             ]
           },
           {
-            "uuid": "ndlp-1-0-1-tcp-c-nr-1-0-0-000",
+            "uuid": "ndlp-1-0-1-tcp-c-nr-1-0-1-000",
             "ltp-direction": "core-model-1-4:TERMINATION_DIRECTION_SINK",
             "client-ltp": [
-              "ndlp-1-0-1-http-c-nr-1-0-0-000"
+              "ndlp-1-0-1-http-c-nr-1-0-1-000"
             ],
             "server-ltp": [
             ],

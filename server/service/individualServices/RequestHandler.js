@@ -47,7 +47,7 @@ exports.postRequestDataFromMWDI = async function(requestUrl, callbackName, paylo
 
     let operationUrl = opData.operationName;
 
-    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, opData.operationName);
+    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, operationUrl);
 
     logger.debug(`Forwarding post data request to '${targetUrl}'`);
 
@@ -90,7 +90,7 @@ exports.getDataFromMWDI = async function (requestUrl, callbackName, payload, fie
         operationUrl = operationUrl.replace("{mountName}", mountName);
     }
 
-    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, opData.operationName, fieldsFilter);
+    const targetUrl = buildTargetUrl(opData.protocol, opData.address, opData.port, operationUrl, fieldsFilter);
 
     logger.debug(`Forwarding get request to '${targetUrl}'`);
 

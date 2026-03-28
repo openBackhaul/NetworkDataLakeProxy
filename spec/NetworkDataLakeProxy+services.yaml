@@ -54,7 +54,7 @@ servers:
         # ordinary services
         - operation-name: /v1/provide-list-of-connected-devices
           uuid: ndlp-1-0-1-op-s-is-010
-        - operation-name: /v1/provide-inventory-data-of-device
+        - operation-name: /v1/provide-inventory-of-device
           uuid: ndlp-1-0-1-op-s-is-011
   http-server:
     own-application-name: NetworkDataLakeProxy
